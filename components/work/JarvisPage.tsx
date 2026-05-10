@@ -7,7 +7,6 @@ import HeroJarvis, {
   JarvisBootScrolly,
   JarvisStoryQuotes,
   JarvisArchitectureGraph,
-  JarvisSelfEvolveLoop,
   JarvisFeaturesGrid,
   JarvisOutcomesQuote,
 } from './HeroJarvis';
@@ -58,7 +57,6 @@ export default function JarvisPage() {
           overlay="linear-gradient(180deg, rgba(10,22,32,0.7), rgba(10,22,32,0.7))"
         />
         <JarvisArchitectureGraph />
-        <JarvisSelfEvolveLoop />
         <JarvisFeaturesGrid />
         <JarvisOutcomesQuote />
         <NextChapter currentSlug="jarvis" accent={VARS['--page-reactor']} />
