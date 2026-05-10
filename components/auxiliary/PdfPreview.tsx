@@ -5,10 +5,10 @@ import { Document, Page, pdfjs } from 'react-pdf';
 import 'react-pdf/dist/Page/AnnotationLayer.css';
 import 'react-pdf/dist/Page/TextLayer.css';
 
-// Worker config: use unpkg CDN matched to the bundled pdfjs version. Using `.mjs`
-// per pdfjs-dist v5+ (worker is shipped as ESM).
+// Worker config: bundled locally (copied from pdfjs-dist into public/).
+// Keeps CSP tight — no external CDN dependency, no offline failure.
 if (typeof window !== 'undefined') {
-  pdfjs.GlobalWorkerOptions.workerSrc = `https://unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.mjs`;
+  pdfjs.GlobalWorkerOptions.workerSrc = '/pdf.worker.min.mjs';
 }
 
 export default function PdfPreview({ src }: { src: string }) {
