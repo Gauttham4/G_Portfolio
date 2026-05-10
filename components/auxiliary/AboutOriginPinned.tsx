@@ -5,7 +5,7 @@ import { motion, useScroll, useTransform, useReducedMotion } from 'framer-motion
 import Reveal from '@/components/motion/Reveal';
 
 const paragraphs = [
-  "I grew up in Puducherry. Did my 12th at Sri Sankara Vidyalaya Hr. Sec. School, Lawspet. Then engineering at Puducherry Technological University.",
+  "I grew up in Puducherry. Did my 12th at Sri Sankara Vidyalaya Hr. Sec. School, Lawspet. Then a B.Tech in Information Technology at Puducherry Technological University.",
   "Hometown roots run through everything I build — half my projects exist because someone I know had a problem nobody else was going to solve.",
   "It's not nostalgia. It's specificity. When you know the people you're building for, the brief writes itself.",
 ];

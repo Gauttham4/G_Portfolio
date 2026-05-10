@@ -33,7 +33,7 @@ const education = [
   },
   {
     kicker: 'B.Tech · Completed',
-    title: 'Computer Science & Engineering',
+    title: 'Information Technology',
     school: 'Puducherry Technological University',
     body: 'Final-year project: CrimeLens AI / CrimeIntellX — published in IJIRE Vol 7 Issue 3 (2025).',
   },

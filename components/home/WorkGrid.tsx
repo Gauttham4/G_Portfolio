@@ -148,18 +148,23 @@ export default function WorkGrid() {
           ))}
         </ul>
 
-        {/* View all */}
+        {/* View all — manual smooth scroll so Lenis doesn't swallow the anchor jump */}
         <Reveal dir="bottom" className="mt-24 flex justify-center">
-          <Link
+          <a
             href="#acts-drilldown"
-            className="group inline-flex items-baseline gap-4 font-mono uppercase tracking-[0.35em] text-amber"
+            onClick={(e) => {
+              e.preventDefault();
+              const target = document.getElementById('acts-drilldown');
+              if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }}
+            className="group inline-flex items-baseline gap-4 font-mono uppercase tracking-[0.35em] text-amber cursor-pointer"
             style={{ fontSize: 'clamp(0.75rem, 1.4vw, 1rem)' }}
           >
             View all 28 projects
             <span className="transition-transform duration-300 group-hover:translate-x-2 group-active:translate-x-2">
               →
             </span>
-          </Link>
+          </a>
         </Reveal>
       </div>
     </section>

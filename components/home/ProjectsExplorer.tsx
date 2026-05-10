@@ -40,7 +40,7 @@ const PROJECT_META: Record<string, { title: string; subtitle: string; descriptio
 export default function ProjectsExplorer() {
   let runningIndex = 0;
   return (
-    <section id="acts-drilldown" className="relative bg-ink py-24 md:py-32 overflow-hidden">
+    <section id="acts-drilldown" className="relative bg-ink py-24 md:py-32 pb-40 md:pb-48">
       {/* Section title */}
       <div className="px-6 md:px-12 max-w-7xl mx-auto mb-16 md:mb-24">
         <p className="font-mono uppercase text-amber/70 text-[10px] tracking-[0.3em] mb-4">§ ALL 28 · INDEX</p>
@@ -132,7 +132,7 @@ function ProjectTile({
   return (
     <div
       ref={ref}
-      className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 lg:gap-20 items-center"
+      className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-12 lg:gap-20 items-start md:items-center"
     >
       {/* TILE — image + title */}
       <a

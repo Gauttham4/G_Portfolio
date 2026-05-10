@@ -144,7 +144,7 @@ export default function ResearchClient() {
               </p>
               <p className="mt-2 font-display text-2xl text-paper md:text-3xl">Gauttham R.</p>
               <p className="mt-1 font-sans text-sm text-paper-dim">
-                B.Tech, Puducherry Technological University
+                B.Tech in Information Technology, Puducherry Technological University
               </p>
             </div>
           </Reveal>
