@@ -1024,7 +1024,7 @@ function TerminalHero({ theme }: Props) {
 
   return (
     <section
-      className="relative w-full overflow-hidden px-6 pt-32 pb-20 md:px-12 md:pt-48 md:pb-28"
+      className="relative w-full overflow-hidden px-4 sm:px-6 pt-28 sm:pt-32 pb-16 sm:pb-20 md:px-12 md:pt-48 md:pb-28"
       style={{ minHeight: '92vh' }}
     >
       <HeroSlideshow slug={theme.slug} />
@@ -1039,7 +1039,7 @@ function TerminalHero({ theme }: Props) {
           <h1
             className="mt-6 font-mono tracking-tight"
             style={{
-              fontSize: 'clamp(2.6rem, 7vw, 6rem)',
+              fontSize: 'clamp(2rem, 7vw, 6rem)',
               lineHeight: 1,
               color: theme.palette.text,
             }}
@@ -1063,8 +1063,10 @@ function TerminalHero({ theme }: Props) {
 
         <div className="md:col-span-5">
           <div
-            className="rounded-md p-5 font-mono text-[12px] leading-[1.7] md:text-sm"
+            className="rounded-md p-4 sm:p-5 font-mono text-[11px] sm:text-[12px] leading-[1.6] md:text-sm overflow-x-auto"
             style={{
+              wordBreak: 'break-word',
+              overflowWrap: 'anywhere',
               background: `${theme.palette.bgMid}`,
               border: `1px solid ${theme.palette.accent}55`,
               color: theme.palette.text,
@@ -1782,7 +1784,7 @@ export function SpaceForgeLayout({ theme }: Props) {
           <h1
             className="mt-6 font-display tracking-tight"
             style={{
-              fontSize: 'clamp(3.5rem, 10vw, 9rem)',
+              fontSize: 'clamp(2.5rem, 10vw, 9rem)',
               lineHeight: 0.9,
               color: '#FFFFFF',
             }}

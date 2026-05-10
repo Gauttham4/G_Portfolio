@@ -82,7 +82,7 @@ export default function HackathonModal({ open, slug, title, photoCount, onClose 
     <AnimatePresence>
       {open && (
         <motion.div
-          className="fixed inset-0 z-[100] flex items-center justify-center bg-ink/95 px-4 py-8 backdrop-blur"
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-ink/95 px-2 py-4 sm:px-4 sm:py-8 backdrop-blur"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
@@ -104,7 +104,7 @@ export default function HackathonModal({ open, slug, title, photoCount, onClose 
                 type="button"
                 onClick={onClose}
                 aria-label="Close"
-                className="font-mono text-[11px] uppercase tracking-[0.3em] text-paper-dim hover:text-amber"
+                className="inline-flex items-center justify-center min-h-[44px] min-w-[44px] px-2 font-mono text-[11px] uppercase tracking-[0.3em] text-paper-dim hover:text-amber"
               >
                 Close ✕
               </button>
@@ -146,7 +146,7 @@ export default function HackathonModal({ open, slug, title, photoCount, onClose 
                           type="button"
                           onClick={() => setActive((a) => Math.max(0, a - 1))}
                           disabled={active === 0}
-                          className="absolute left-3 top-1/2 -translate-y-1/2 rounded-full border border-paper-soft bg-ink/70 px-3 py-1.5 font-mono text-xs text-paper backdrop-blur transition-colors hover:border-amber hover:text-amber disabled:opacity-30"
+                          className="absolute left-3 top-1/2 -translate-y-1/2 inline-flex h-11 w-11 items-center justify-center rounded-full border border-paper-soft bg-ink/70 font-mono text-base text-paper backdrop-blur transition-colors hover:border-amber hover:text-amber disabled:opacity-30"
                           aria-label="Previous photo"
                         >
                           ←
@@ -157,7 +157,7 @@ export default function HackathonModal({ open, slug, title, photoCount, onClose 
                             setActive((a) => Math.min(photoCount - 1, a + 1))
                           }
                           disabled={active === photoCount - 1}
-                          className="absolute right-3 top-1/2 -translate-y-1/2 rounded-full border border-paper-soft bg-ink/70 px-3 py-1.5 font-mono text-xs text-paper backdrop-blur transition-colors hover:border-amber hover:text-amber disabled:opacity-30"
+                          className="absolute right-3 top-1/2 -translate-y-1/2 inline-flex h-11 w-11 items-center justify-center rounded-full border border-paper-soft bg-ink/70 font-mono text-base text-paper backdrop-blur transition-colors hover:border-amber hover:text-amber disabled:opacity-30"
                           aria-label="Next photo"
                         >
                           →

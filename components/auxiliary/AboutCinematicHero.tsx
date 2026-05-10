@@ -20,7 +20,8 @@ export default function AboutCinematicHero() {
   return (
     <section
       ref={ref}
-      className="relative h-[92vh] w-full overflow-hidden bg-ink"
+      data-hero
+      className="relative h-[92vh] min-h-[600px] w-full overflow-hidden bg-ink"
     >
       <motion.div className="absolute inset-0" style={{ y, scale }}>
         <Image
@@ -47,7 +48,7 @@ export default function AboutCinematicHero() {
       />
 
       {/* Foreground */}
-      <div className="absolute inset-0 flex flex-col items-start justify-end px-6 pb-20 md:px-12 md:pb-24">
+      <div className="absolute inset-0 flex flex-col items-start justify-end px-4 sm:px-6 pb-16 sm:pb-20 md:px-12 md:pb-24">
         <motion.p
           className="font-mono text-[10px] uppercase tracking-[0.4em] text-amber"
           initial={{ opacity: 0, y: 12 }}
@@ -62,7 +63,7 @@ export default function AboutCinematicHero() {
           mode="letters"
           text="I'm Gauttham R."
           delay={0.3}
-          className="mt-5 font-display text-5xl leading-[0.95] tracking-tight text-paper md:text-7xl lg:text-[8.5rem]"
+          className="mt-5 font-display text-4xl sm:text-5xl leading-[0.95] tracking-tight text-paper md:text-7xl lg:text-[8.5rem]"
         />
 
         <AnimatedHeading
@@ -70,7 +71,7 @@ export default function AboutCinematicHero() {
           mode="words"
           text="An engineer who finishes."
           delay={0.6}
-          className="mt-2 font-display text-4xl italic leading-[1.0] tracking-tight text-amber md:text-6xl lg:text-7xl"
+          className="mt-2 font-display text-3xl sm:text-4xl italic leading-[1.0] tracking-tight text-amber md:text-6xl lg:text-7xl"
         />
 
         <motion.p

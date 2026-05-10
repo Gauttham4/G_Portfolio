@@ -104,7 +104,7 @@ const bubbleVariants: Variants = {
 
 export default function SkillsConstellation() {
   return (
-    <section className="mx-auto max-w-7xl px-6 py-24 md:py-32">
+    <section className="mx-auto max-w-7xl px-4 sm:px-6 py-20 sm:py-24 md:py-32">
       <p className="font-mono text-[10px] uppercase tracking-[0.4em] text-amber">Toolbelt</p>
       <h2 className="mt-3 font-display text-3xl leading-[1.05] tracking-tight text-paper md:text-5xl">
         Skills.{' '}

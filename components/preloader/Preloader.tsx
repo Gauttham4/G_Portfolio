@@ -512,7 +512,7 @@ export default function Preloader() {
         </div>
 
         {/* Bottom — counter + progress bar + status */}
-        <div className="absolute bottom-8 left-0 right-0 px-8 md:px-12">
+        <div className="absolute bottom-6 sm:bottom-8 left-0 right-0 px-4 sm:px-8 md:px-12">
           <div className="mx-auto flex max-w-6xl items-end justify-between">
             <div className="font-mono text-[10px] uppercase tracking-[0.3em] text-paper-dim">
               Loading studio
