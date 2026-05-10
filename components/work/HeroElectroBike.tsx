@@ -116,7 +116,7 @@ export default function HeroElectroBike() {
             className="font-display tracking-tight"
             style={{
               color: palette.text,
-              fontSize: 'clamp(3rem, 9vw, 7.5rem)',
+              fontSize: 'clamp(2.25rem, 9vw, 7.5rem)',
               lineHeight: 0.92,
             }}
             initial={reduce ? false : { opacity: 0, y: 16 }}

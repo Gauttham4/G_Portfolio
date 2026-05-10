@@ -16,7 +16,7 @@ export default function HeroStatement() {
   const titleOpacity = useTransform(scrollYProgress, [0, 0.7, 1], reduced ? [1, 1, 1] : [1, 0.85, 0.2]);
 
   return (
-    <section ref={sectionRef} className="relative w-full h-screen min-h-[640px] bg-ink overflow-hidden">
+    <section ref={sectionRef} data-hero className="relative w-full h-screen min-h-[600px] bg-ink overflow-hidden">
       {/* Full-bleed portrait */}
       <motion.div
         style={{ scale: photoScale, y: photoY, opacity: photoOpacity }}
@@ -46,8 +46,8 @@ export default function HeroStatement() {
         }}
       />
 
-      {/* Top-right: caption pill (over the photo, not in header bar) */}
-      <div className="absolute top-6 right-6 md:top-8 md:right-12 z-10">
+      {/* Top-right: caption pill (over the photo, not in header bar) — hidden on tiny screens to avoid clashing with header */}
+      <div className="hidden sm:block absolute top-6 right-6 md:top-8 md:right-12 z-10">
         <p className="font-mono uppercase text-paper-dim text-[10px] tracking-[0.3em] bg-ink/40 backdrop-blur-sm px-3 py-1 border border-paper-soft rounded-sm">
           PUDUCHERRY · 2026
         </p>
@@ -67,13 +67,13 @@ export default function HeroStatement() {
       {/* MASSIVE name overlay — bottom-anchored, left-aligned */}
       <motion.div
         style={{ y: titleY, opacity: titleOpacity }}
-        className="absolute inset-0 flex items-end pb-16 md:pb-24 px-6 md:px-12 z-10"
+        className="absolute inset-0 flex items-end pb-12 sm:pb-16 md:pb-24 px-4 sm:px-6 md:px-12 z-10"
       >
         <div className="w-full max-w-[1700px]">
           <h1
             aria-label="Gauttham R."
             className="font-display font-normal text-paper leading-[0.84] tracking-[-0.04em] mb-6 md:mb-8"
-            style={{ fontSize: 'clamp(4rem, 16vw, 18rem)' }}
+            style={{ fontSize: 'clamp(3rem, 16vw, 18rem)' }}
           >
             {Array.from('Gauttham R').map((c, i) => (
               <motion.span

@@ -54,7 +54,7 @@ export default function BackButton() {
       initial={{ opacity: 0, x: -10 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ delay: 0.4, duration: 0.5 }}
-      className="fixed top-20 left-4 md:top-24 md:left-8 z-[80] font-mono uppercase text-amber/85 text-[11px] tracking-[0.3em] px-4 py-2 border border-paper-soft bg-ink/85 backdrop-blur rounded-sm hover:text-amber hover:border-amber/60 hover:bg-ink/95 transition-all cursor-pointer pointer-events-auto"
+      className="fixed top-20 left-3 md:top-24 md:left-8 z-[80] font-mono uppercase text-amber/85 text-[11px] tracking-[0.3em] px-4 py-3 min-h-[44px] inline-flex items-center border border-paper-soft bg-ink/85 backdrop-blur rounded-sm hover:text-amber hover:border-amber/60 hover:bg-ink/95 transition-all cursor-pointer pointer-events-auto"
     >
       ← Back
     </motion.button>

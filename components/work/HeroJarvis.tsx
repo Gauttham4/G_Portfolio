@@ -105,7 +105,7 @@ export default function HeroJarvis() {
         § ACT III · FRONTIER · 09 / 28
       </motion.p>
 
-      <div className="relative z-10 grid lg:grid-cols-2 items-center gap-12 lg:gap-6 min-h-[100svh] px-6 md:px-12 max-w-7xl mx-auto pt-24 pb-12">
+      <div className="relative z-10 grid lg:grid-cols-2 items-center gap-12 lg:gap-6 min-h-[100svh] px-4 sm:px-6 md:px-12 max-w-7xl mx-auto pt-24 pb-12">
         {/* LEFT — typewriter boot */}
         <BootTerminal lines={BOOT_LINES} />
 
@@ -116,7 +116,7 @@ export default function HeroJarvis() {
             className="font-display tracking-tight mt-8"
             style={{
               color: palette.text,
-              fontSize: 'clamp(4rem, 12vw, 11rem)',
+              fontSize: 'clamp(3rem, 12vw, 11rem)',
               lineHeight: 0.9,
             }}
             initial={reduce ? false : { opacity: 0, y: 24 }}

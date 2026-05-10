@@ -162,9 +162,9 @@ export default function Intro() {
     <section
       ref={sectionRef}
       aria-label="Intro"
-      className="relative w-full bg-ink overflow-hidden py-32 md:py-44"
+      className="relative w-full bg-ink overflow-hidden py-20 sm:py-28 md:py-44"
     >
-      <div className="mx-auto max-w-7xl px-6 md:px-12">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 md:px-12">
         {/* Top kicker + headline */}
         <motion.div
           style={{ y: headlineY, opacity: headlineOpacity }}
@@ -187,7 +187,7 @@ export default function Intro() {
             <div key={s.label} className="flex flex-col gap-1">
               <span
                 className="font-display text-amber"
-                style={{ fontSize: 'clamp(2.5rem, 6vw, 5rem)', lineHeight: 0.9, letterSpacing: '-0.03em' }}
+                style={{ fontSize: 'clamp(2rem, 8vw, 5rem)', lineHeight: 0.9, letterSpacing: '-0.03em' }}
               >
                 <CountUp to={s.value} suffix={s.suffix} />
               </span>
@@ -252,8 +252,8 @@ export default function Intro() {
             </motion.div>
           </div>
 
-          {/* Right: parallax portrait stack */}
-          <div className="md:col-span-5 relative h-[440px] md:h-[640px]">
+          {/* Right: parallax portrait stack — hidden on phones to prevent overlap & save vertical space */}
+          <div className="hidden sm:block md:col-span-5 relative h-[420px] md:h-[640px]">
             <motion.div
               style={{ y: photoYa, rotate: -3 }}
               className="absolute right-2 top-0 w-[58%] aspect-[3/4] overflow-hidden border border-rule will-change-transform"

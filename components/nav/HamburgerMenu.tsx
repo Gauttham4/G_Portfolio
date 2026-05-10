@@ -71,7 +71,7 @@ export default function HamburgerMenu() {
         aria-label="Open menu"
         aria-expanded={open}
         onClick={() => setOpen(true)}
-        className="group relative flex h-10 w-10 items-center justify-center"
+        className="group relative flex h-11 w-11 items-center justify-center"
       >
         <span className="flex flex-col gap-[6px]">
           <span className="block h-px w-7 bg-paper transition-colors group-hover:bg-amber" />
@@ -98,7 +98,7 @@ export default function HamburgerMenu() {
               type="button"
               aria-label="Close menu"
               onClick={() => setOpen(false)}
-              className="absolute right-6 top-6 flex items-center justify-center font-mono text-xs sm:text-sm uppercase tracking-[0.3em] text-paper hover:text-amber md:right-10 md:top-10"
+              className="absolute right-4 top-4 flex min-h-[44px] min-w-[44px] items-center justify-center px-2 py-2 font-mono text-xs sm:text-sm uppercase tracking-[0.3em] text-paper hover:text-amber md:right-10 md:top-10"
             >
               × Close
             </button>
@@ -124,7 +124,7 @@ export default function HamburgerMenu() {
                       ease: [0.22, 1, 0.36, 1],
                       delay: 0.15 + i * 0.06,
                     }}
-                    className="py-2"
+                    className="py-2 min-h-[44px]"
                   >
                     <Link
                       href={l.href}

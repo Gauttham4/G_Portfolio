@@ -100,7 +100,7 @@ export function ProductLaunchLayout({ theme }: Props) {
             transition={{ duration: 0.9, delay: 0.1, ease: EASE }}
             className="mt-6 font-display tracking-tight"
             style={{
-              fontSize: 'clamp(3rem, 9vw, 8rem)',
+              fontSize: 'clamp(2.25rem, 9vw, 8rem)',
               lineHeight: 0.92,
               color: theme.palette.text,
             }}
@@ -303,7 +303,7 @@ export function ProductLaunchLayout({ theme }: Props) {
                     className="font-display leading-[0.85] tracking-tight"
                     style={{
                       color: theme.palette.accent,
-                      fontSize: i === 0 ? 'clamp(3.5rem, 9vw, 7rem)' : 'clamp(2.4rem, 5vw, 4rem)',
+                      fontSize: i === 0 ? 'clamp(2.5rem, 9vw, 7rem)' : 'clamp(2rem, 5vw, 4rem)',
                     }}
                   >
                     {n.value}
@@ -456,7 +456,7 @@ export function CaseStudyLayout({ theme }: Props) {
             transition={{ duration: 0.9, delay: 0.1, ease: EASE }}
             className="mt-6 font-display tracking-tight"
             style={{
-              fontSize: 'clamp(2.6rem, 7vw, 6.5rem)',
+              fontSize: 'clamp(2rem, 7vw, 6.5rem)',
               lineHeight: 1,
             }}
           >
@@ -712,7 +712,7 @@ export function EditorialLayout({ theme }: Props) {
             delay={0.15}
             className="mt-8 font-display tracking-tight"
             style={{
-              fontSize: 'clamp(2.6rem, 8vw, 7rem)',
+              fontSize: 'clamp(2rem, 8vw, 7rem)',
               lineHeight: 0.95,
             }}
           />
@@ -801,7 +801,7 @@ export function EditorialLayout({ theme }: Props) {
               <span
                 className="float-left mr-3 mt-1 font-display leading-[0.85]"
                 style={{
-                  fontSize: 'clamp(4rem, 9vw, 7rem)',
+                  fontSize: 'clamp(2.75rem, 9vw, 7rem)',
                   color: theme.palette.accent,
                 }}
               >

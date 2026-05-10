@@ -42,7 +42,7 @@ export default function ProjectsExplorer() {
   return (
     <section id="acts-drilldown" className="relative bg-ink py-24 md:py-32 pb-40 md:pb-48">
       {/* Section title */}
-      <div className="px-6 md:px-12 max-w-7xl mx-auto mb-16 md:mb-24">
+      <div className="px-4 sm:px-6 md:px-12 max-w-7xl mx-auto mb-16 md:mb-24">
         <p className="font-mono uppercase text-amber/70 text-[10px] tracking-[0.3em] mb-4">§ ALL 28 · INDEX</p>
         <h2 className="font-display text-paper text-4xl md:text-7xl tracking-tight leading-[0.95] mb-4">Five acts. Twenty-eight ships.</h2>
         <p className="font-sans text-paper-dim text-base md:text-lg max-w-xl">A scroll through every project, in narrative order.</p>
@@ -61,7 +61,7 @@ function ActSection({ act, startIndex }: { act: Act; startIndex: number }) {
   return (
     <>
       <ActDivider act={act} />
-      <div className="space-y-24 md:space-y-32 mt-16 md:mt-24 px-6 md:px-12">
+      <div className="space-y-24 md:space-y-32 mt-16 md:mt-24 px-4 sm:px-6 md:px-12">
         {act.projects.map((p, i) => {
           const meta = PROJECT_META[p.slug];
           return (
@@ -88,7 +88,7 @@ function ActDivider({ act }: { act: Act }) {
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start end', 'end start'] });
   const x = useTransform(scrollYProgress, [0, 1], ['10%', '-10%']);
   return (
-    <div ref={ref} className="relative w-full h-[40vh] md:h-[60vh] flex items-center overflow-hidden border-t border-rule mt-32">
+    <div ref={ref} className="relative w-full h-[28vh] sm:h-[40vh] md:h-[60vh] flex items-center overflow-hidden border-t border-rule mt-20 sm:mt-32">
       <motion.div style={{ x }} className="whitespace-nowrap will-change-transform">
         <span
           className="font-display text-paper-soft tracking-[-0.04em] leading-none"
@@ -103,7 +103,7 @@ function ActDivider({ act }: { act: Act }) {
           {act.numeral}. {act.name.toUpperCase()} —
         </span>
       </motion.div>
-      <div className="absolute left-6 md:left-12 bottom-6 md:bottom-12">
+      <div className="absolute left-4 sm:left-6 md:left-12 bottom-4 sm:bottom-6 md:bottom-12 max-w-[80%]">
         <p className="font-mono uppercase text-amber text-xs tracking-[0.3em]">ACT {act.numeral}</p>
         <p className="font-sans text-paper-dim text-base md:text-lg mt-1 max-w-md italic">{act.label}</p>
       </div>
@@ -200,7 +200,7 @@ function ProjectTile({
         }`}
       >
         <p className="font-mono uppercase text-amber/70 text-[10px] tracking-[0.3em] mb-4">§ DESCRIPTION</p>
-        <p className="font-display italic text-paper text-xl md:text-2xl lg:text-3xl leading-[1.25] tracking-tight max-w-md">
+        <p className="font-display italic text-paper text-xl md:text-2xl lg:text-3xl leading-[1.25] tracking-tight max-w-full md:max-w-md">
           {description}
         </p>
         <a

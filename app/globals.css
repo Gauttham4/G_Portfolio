@@ -91,6 +91,29 @@ body {
   transform: rotateY(0deg) scaleX(1);
 }
 
+/* === Mobile responsiveness baseline === */
+/* Tiny viewports (≤ 360px) — keep ultra-narrow Androids/iPhone SE 1 from blowing out */
+@media (max-width: 360px) {
+  html {
+    font-size: 14.5px;
+  }
+}
+
+/* Standard small mobile (≤ 480px) */
+@media (max-width: 480px) {
+  /* Trim oversized hero bottom padding so first fold text isn't pushed under the fold */
+  section[data-hero] {
+    padding-bottom: 3.5rem !important;
+  }
+}
+
+/* Long mono / uppercase strings should be allowed to wrap on narrow widths
+   unless they're explicitly intended to overflow (marquees use motion + nowrap). */
+.mono-wrap {
+  word-break: break-word;
+  overflow-wrap: anywhere;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

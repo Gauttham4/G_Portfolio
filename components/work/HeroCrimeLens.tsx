@@ -99,12 +99,12 @@ export default function HeroCrimeLens() {
         </motion.span>
       </motion.div>
 
-      <div className="relative z-10 flex flex-col items-center text-center px-6 md:px-12 max-w-5xl pt-10">
+      <div className="relative z-10 flex flex-col items-center text-center px-4 sm:px-6 md:px-12 max-w-5xl pt-10">
         <Envelope />
 
         <motion.h1
           className="font-display tracking-tight mt-12"
-          style={{ color: palette.text, fontSize: 'clamp(3.5rem, 11vw, 9rem)', lineHeight: 0.92 }}
+          style={{ color: palette.text, fontSize: 'clamp(2.5rem, 11vw, 9rem)', lineHeight: 0.92 }}
           initial={reduce ? false : { opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 1.2, ease: ease.envelope }}
