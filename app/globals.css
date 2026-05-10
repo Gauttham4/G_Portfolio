@@ -1,0 +1,103 @@
+@import "tailwindcss";
+
+*:focus-visible {
+  outline: 2px solid var(--color-amber);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* Prevent default browser focus-ring fighting with ours */
+*:focus:not(:focus-visible) {
+  outline: none;
+}
+
+@theme {
+  /* Editorial monochrome */
+  --color-ink:        #0A0A0A;
+  --color-paper:      #FAFAFA;
+  --color-paper-dim:  rgba(250, 250, 250, 0.7);
+  --color-paper-soft: rgba(250, 250, 250, 0.12);
+  --color-amber:      #E8B863;
+  --color-amber-soft: rgba(232, 184, 99, 0.18);
+  --color-rule:       rgba(250, 250, 250, 0.08);
+
+  /* Legacy aliases — keep so old components don't crash */
+  --color-bg-deep:  var(--color-ink);
+  --color-gold:     var(--color-amber);
+  --color-crimson:  #C8102E;
+  --color-nano:     #4FC3F7;
+  --color-hud-line: var(--color-rule);
+
+  /* Type tokens */
+  --font-display: var(--font-fraunces), serif;
+  --font-sans:    var(--font-inter), system-ui, sans-serif;
+  --font-mono:    var(--font-jetbrains), ui-monospace, monospace;
+
+  /* Easing */
+  --ease-suit-eject:      cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-repulsor-charge: cubic-bezier(0.83, 0, 0.17, 1);
+}
+
+:root {
+  --bg: var(--color-ink);
+  /* Legacy plain-CSS aliases (for any inline var() refs) */
+  --bg-deep: #0A0A0A;
+  --gold:    #E8B863;
+  --crimson: #C8102E;
+  --nano:    #4FC3F7;
+  --hud-line: rgba(250, 250, 250, 0.08);
+}
+
+html,
+body {
+  background: var(--color-ink);
+  color: var(--color-paper);
+  -webkit-font-smoothing: antialiased;
+  font-family: var(--font-inter), system-ui, sans-serif;
+  overflow-x: clip;
+}
+
+/* Swiper styling overrides */
+.swiper-pagination-bullet {
+  background: var(--color-paper-soft) !important;
+  opacity: 1 !important;
+  width: 8px;
+  height: 8px;
+}
+.swiper-pagination-bullet-active {
+  background: var(--color-amber) !important;
+}
+.swiper-button-prev,
+.swiper-button-next {
+  color: var(--color-paper) !important;
+}
+.swiper-button-prev:hover,
+.swiper-button-next:hover {
+  color: var(--color-amber) !important;
+}
+.swiper-button-prev::after,
+.swiper-button-next::after {
+  font-size: 24px !important;
+}
+
+/* madebycat-style signature row hover: rotateY + scaleX */
+.row-tilt {
+  transform: rotateY(-4deg) scaleX(0.98);
+  transform-origin: left center;
+  transition: transform 1s ease-in-out;
+  will-change: transform;
+}
+.row-tilt-host:hover .row-tilt {
+  transform: rotateY(0deg) scaleX(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
