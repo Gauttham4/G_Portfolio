@@ -17,6 +17,12 @@ import {
   HackerDossierLayout,
   SpaceForgeLayout,
 } from './themed/LayoutVariants';
+import {
+  TvkPoliticalLayout,
+  ZyntraAgencyLayout,
+  VkmgWireframeLayout,
+  DivyaCommandLayout,
+} from './themed/BespokeProjectLayouts';
 import type { ProjectTheme } from '@/lib/project-themes';
 
 type Props = { theme: ProjectTheme };
@@ -24,6 +30,10 @@ type Props = { theme: ProjectTheme };
 export default function ThemedProjectPage({ theme }: Props) {
   // Bespoke per-slug layouts take priority.
   if (theme.slug === 'spaceforge') return <SpaceForgeLayout theme={theme} />;
+  if (theme.slug === 'tvk') return <TvkPoliticalLayout theme={theme} />;
+  if (theme.slug === 'zyntra') return <ZyntraAgencyLayout theme={theme} />;
+  if (theme.slug === 'vkmg-landing') return <VkmgWireframeLayout theme={theme} />;
+  if (theme.slug === 'divyadrishti') return <DivyaCommandLayout theme={theme} />;
   // Phase 9 — variant dispatch.
   if (theme.layout === 'A') return <ProductLaunchLayout theme={theme} />;
   if (theme.layout === 'B') return <CaseStudyLayout theme={theme} />;
