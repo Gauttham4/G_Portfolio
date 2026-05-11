@@ -9,7 +9,7 @@ import AwardsGrid from '@/components/home/AwardsGrid';
 import HomeAboutTeaser from '@/components/home/HomeAboutTeaser';
 import NowPlayingChip from '@/components/home/NowPlayingChip';
 import HomeFooter from '@/components/home/HomeFooter';
-import ProjectsExplorer from '@/components/home/ProjectsExplorer';
+import WorksByDomain from '@/components/home/WorksByDomain';
 import PortsmouthLeke from '@/components/leke/PortsmouthLeke';
 import MarqueeBand from '@/components/scroll/MarqueeBand';
 import PinnedHorizontalRail from '@/components/scroll/PinnedHorizontalRail';
@@ -47,8 +47,8 @@ export default function HomeClient() {
         {/* Featured projects — pinned horizontal rail (Framer Motion) */}
         <PinnedHorizontalRail />
 
-        {/* All 28 — filterable explorer */}
-        <ProjectsExplorer />
+        {/* All 28 — domains-first glass accordion + horizontal carousel */}
+        <WorksByDomain />
 
         {/* Floating Portsmouth sticker near footer */}
         <div className="pointer-events-none relative mx-auto flex w-full max-w-[1500px] justify-end px-6 md:px-12">
