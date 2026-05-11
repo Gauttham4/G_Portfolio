@@ -505,10 +505,11 @@ export function CaseStudyLayout({ theme }: Props) {
       <div id="case" ref={stepsRef} className="relative" style={{ height: '300vh' }}>
         <div className="sticky top-0 flex h-screen w-full items-center justify-center px-6 md:px-12">
           <div className="relative mx-auto w-full max-w-6xl">
-            <div className="mb-10 flex gap-4 font-mono text-[10px] uppercase tracking-[0.3em]">
+            <div className="mb-10 grid grid-cols-3 gap-2 sm:flex sm:gap-4 font-mono text-[9px] sm:text-[10px] uppercase tracking-[0.2em] sm:tracking-[0.3em]">
               {stepKeys.map((s, i) => (
                 <motion.span
                   key={s.kicker}
+                  className="whitespace-nowrap"
                   style={{
                     opacity: stepTabs[i],
                     color: theme.palette.accent,

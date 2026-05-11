@@ -1301,15 +1301,15 @@ export const THEMES: Record<string, ProjectTheme> = {
   divyadrishti: {
     slug: 'divyadrishti',
     title: 'DivyaDrishti',
-    subtitle: 'A safety app that watches over women in real time.',
+    subtitle: 'Crowd-safety + predictive assist for concerts, police, and SOS responders.',
     kicker: kickerFor('divyadrishti'),
     heroImage: '/work/divyadrishti/thumb.jpg',
     palette: {
-      bg: '#1A1530',
-      bgMid: '#2A2050',
-      text: '#FAF7F2',
-      dim: '#9A8FB8',
-      accent: '#7C5CFF',
+      bg: '#0E1428',
+      bgMid: '#1A2244',
+      text: '#F2F6FF',
+      dim: '#8AA0C4',
+      accent: '#22D3EE',
       accent2: '#FF2D4F',
     },
     signatureMotif: 'pulse-glow',
@@ -1317,43 +1317,44 @@ export const THEMES: Record<string, ProjectTheme> = {
       quotes: [
         {
           kicker: 'Quote 01',
-          quote: 'What\'s the point of a safety app you can\'t use when you\'re scared?',
-          context: 'A girl forgot the four-digit PIN twenty minutes into a Bangalore Uber. The app was useless.',
+          quote: 'A concert is forty-thousand people who all decided to be there. A surge is when ten thousand of them decide to leave at once.',
+          context: 'Designed after the Karur crush. The product is for the next concert, not the last one.',
         },
         {
           kicker: 'Quote 02',
-          quote: 'I wanted to design backwards from the moment of fear.',
-          context: 'Three things, in order: location, social signal, evidence. Everything else waits.',
+          quote: 'Two audiences, one signal: the person inside the crowd and the officer outside it.',
+          context: 'Customers see a heatmap and a safe-exit nudge. Police see density deltas and a predicted hotspot in 90 seconds.',
         },
         {
           kicker: 'Quote 03',
-          quote: 'The aesthetic loss was worth the reliability win.',
-          context: 'Three of five users misfired in the first ten minutes. The 1.2-second hold-to-confirm dropped misfires to zero.',
+          quote: 'Predictive only works if SOS still works when prediction fails.',
+          context: 'Hold-to-confirm SOS, sub-3s pipeline, offline queue. The fallback is the foundation.',
         },
       ],
     },
     features: [
-      { title: 'Hold-to-confirm SOS', desc: '1.2s long press with a visual ring. Misfire rate dropped to zero.' },
-      { title: 'Sub-3s SOS pipeline', desc: 'GPS fix → camera frame → Firestore alert → FCM fan-out.' },
-      { title: 'GPS-radar map', desc: 'Pulse on the map, circle of trusted contacts.' },
-      { title: 'Evidence capture', desc: 'Camera frame the moment SOS fires; uploaded with the alert.' },
-      { title: 'No PIN, no menu', desc: 'One press. Everything else waits.' },
-      { title: 'Hive offline queue', desc: 'Alerts queue locally if there is no signal; drained when reconnected.' },
+      { title: 'Live crowd heatmap', desc: 'BLE-mesh + opt-in GPS density rendered as a real-time grid. Refresh under 4s.' },
+      { title: 'Predictive surge alerts', desc: '90s ahead-of-crush warning from density deltas + flow vectors. Police side only.' },
+      { title: 'Customer safe-exit nudge', desc: 'Concertgoer gets a quiet "least-dense gate in 30s" card before the surge hits.' },
+      { title: 'Officer ops dashboard', desc: 'Per-sector density, predicted hotspots, one-tap reroute broadcast.' },
+      { title: 'Hold-to-confirm SOS', desc: '1.2s long press with visual ring. Sub-3s pipeline. Misfire rate zero.' },
+      { title: 'Offline queue + mesh fallback', desc: 'Hive locally; BLE peer relay when towers saturate at peak load.' },
     ],
     architecture: [
-      { layer: 'App', details: 'Flutter — Android + iOS, geolocator, camera, permission_handler.' },
-      { layer: 'Push', details: 'firebase_messaging + flutter_local_notifications + awesome_notifications.' },
-      { layer: 'Storage', details: 'Hive for offline queue, Firestore for the live alert stream.' },
-      { layer: 'Trust circle', details: 'Contact graph; FCM fan-out targets only opted-in trusted contacts.' },
+      { layer: 'Customer app', details: 'Flutter — geolocator, BLE peripheral, permission_handler. Anonymous opt-in density beacon.' },
+      { layer: 'Officer console', details: 'Next.js + Mapbox GL. Density tiles, prediction overlay, broadcast composer.' },
+      { layer: 'Prediction', details: 'On-device flow-vector model + server-side ensemble. 90s lookahead on a 5s window.' },
+      { layer: 'Push & mesh', details: 'firebase_messaging + flutter_local_notifications. BLE-peer relay when cellular saturates.' },
+      { layer: 'Storage', details: 'Hive offline queue. Firestore live alert stream. PostGIS for density tiles.' },
     ],
     bigNumbers: [
+      { value: '90', label: 's lookahead window' },
       { value: '3', label: 's end-to-end SOS' },
       { value: '1.2', label: 's hold-to-confirm' },
-      { value: '0', label: 'misfires after fix' },
-      { value: '3', label: 'things, in order' },
+      { value: '40k', label: 'concert headcount target' },
     ],
     outcomeQuote:
-      'A pulse on the map. A circle of people. A response that doesn\'t wait.',
+      'Predict the crush. Move the crowd before it moves itself. SOS stays as the floor.',
   },
 
   // ============ FOUNDATIONS ============
@@ -1627,7 +1628,7 @@ const MOTIFS_AND_GALLERY: Record<string, MotifsAndGallery> = {
   },
   'vkmg-landing': {
     motifs: { hero: 'color-block', mid: 'marquee-strip' },
-    gallery: gal('vkmg-landing', ['INTERIOR · MODERN', 'DESIGN · COLOR', 'DEV · NIGHT', 'AGENCY · CRAFT', 'WORKSPACE · CRE', 'PALETTE · COLOR']),
+    gallery: gal('vkmg-landing', ['WIRE · DESK', 'BLUEPRINT · GRID', 'TICK · RING', 'TYPEWRITER · TAG', 'STATUS · LINE', 'PALETTE · TRIAD']),
   },
   'vkmg-report-app': {
     motifs: { hero: 'field-grid', mid: 'cloud-grid' },
@@ -1635,11 +1636,11 @@ const MOTIFS_AND_GALLERY: Record<string, MotifsAndGallery> = {
   },
   zyntra: {
     motifs: { hero: 'color-block', mid: 'marquee-strip' },
-    gallery: gal('zyntra', ['INTERIOR · BOLD', 'COLOR · DESIGN', 'DEV · NIGHT', 'AGENCY · CRAFT', 'WORKSPACE · CRE', 'PALETTE · COLOR']),
+    gallery: gal('zyntra', ['MARQUEE · 14VW', 'MAGENTA · BLOCK', 'YELLOW · BLOCK', 'CURSOR · BLOB', 'SPELL · LOADER', 'SCROLL · SNAP']),
   },
   divyadrishti: {
     motifs: { hero: 'guardian-halo', mid: 'threat-radar' },
-    gallery: gal('divyadrishti', ['PORTRAIT · WOMAN', 'URBAN · NIGHT', 'WALKING · DUSK', 'PHONE · ALERT', 'SILHOUETTE · STREET', 'CITY · LIGHTS']),
+    gallery: gal('divyadrishti', ['CROWD · SURGE', 'HEATMAP · LIVE', 'PREDICT · 90S', 'OFFICER · OPS', 'SAFE · EXIT', 'SOS · RING']),
   },
   // ============ FOUNDATIONS ============
   'cloud-provisioning': {
@@ -1648,7 +1649,7 @@ const MOTIFS_AND_GALLERY: Record<string, MotifsAndGallery> = {
   },
   tvk: {
     motifs: { hero: 'phone-otp', mid: 'soft-reveal' as MotifKey },
-    gallery: gal('tvk', ['PHONE · HAND', 'OTP · SCREEN', 'PHONE · CLOSE', 'APPS · GRID', 'NOTIFY · CARD', 'TEXT · UI']),
+    gallery: gal('tvk', ['FLAG · RALLY', 'VIJAY · ADDRESS', 'CROWD · DUSK', 'STAGE · LIGHT', 'BALLOT · SYMBOL', 'VOLUNTEER · BADGE']),
   },
   'medicine-search': {
     motifs: { hero: 'capsule-pulse', mid: 'chat-bubble' as MotifKey },

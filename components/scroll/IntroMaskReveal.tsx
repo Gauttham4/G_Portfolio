@@ -4,7 +4,7 @@ import { useRef } from 'react';
 import { motion, useReducedMotion, useScroll, useTransform, type MotionValue } from 'framer-motion';
 
 const PARA_1 =
-  "Twenty-eight projects across AI, edtech, finance, safety, and field operations. From a paper-and-pen tuition fee book turned into a four-role finance approval pipeline, to a self-evolving multi-agent AI that teaches itself new skills, to a women's safety platform with offline emergency queueing across mobile, web, and Python AI. Each one started the same way — somebody I knew had a problem nobody else was going to solve.";
+  "Twenty-eight projects across AI, edtech, finance, safety, and field operations. From a paper-and-pen tuition fee book turned into a four-role finance approval pipeline, to a self-evolving multi-agent AI that teaches itself new skills, to a crowd-safety platform with 90-second predictive surge alerts and SOS pipelines for first responders. Each one started the same way — somebody I knew had a problem nobody else was going to solve.";
 
 const PARA_2 =
   "CrimeIntellX got published in IJIRE before I'd graduated. Today I'm engineering at THEELABS, with a confirmed offer for an MS in Cybersecurity with Forensic IT from the University of Portsmouth. The same rule runs through everything I ship — pick the smallest tool that solves the real problem, and take it all the way to a working product.";

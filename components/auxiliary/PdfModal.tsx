@@ -1,7 +1,10 @@
 'use client';
 
 import { AnimatePresence, motion } from 'framer-motion';
+import dynamic from 'next/dynamic';
 import { useEffect, useRef } from 'react';
+
+const PdfPreview = dynamic(() => import('./PdfPreview'), { ssr: false });
 
 type Props = {
   open: boolean;
@@ -108,12 +111,9 @@ export default function PdfModal({ open, src, title, onClose }: Props) {
                 </button>
               </div>
             </div>
-            <iframe
-              src={src}
-              title={title}
-              sandbox="allow-same-origin allow-popups"
-              className="h-[calc(100%-44px)] w-full bg-paper"
-            />
+            <div className="h-[calc(100%-44px)] w-full overflow-y-auto bg-paper">
+              <PdfPreview src={src} allPages />
+            </div>
           </motion.div>
         </motion.div>
       )}

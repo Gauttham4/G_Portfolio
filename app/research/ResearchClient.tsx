@@ -1,10 +1,13 @@
 'use client';
 
 import Link from 'next/link';
+import dynamic from 'next/dynamic';
 import { useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import Reveal from '@/components/motion/Reveal';
 import AnimatedHeading from '@/components/motion/AnimatedHeading';
+
+const PdfPreview = dynamic(() => import('@/components/auxiliary/PdfPreview'), { ssr: false });
 
 const ABSTRACT =
   'CrimeIntellX (CrimeLens AI) is an AI-augmented forensic case-management workspace that fuses RAG over heterogeneous evidence, encrypted ingestion pipelines, and call-detail-record analytics into a single investigator UI. Built as a final-year project, it processes 240 mock case files across PDF, image, audio, and structured CDR formats; surfaces semantic matches via Pinecone vector search; and renders cross-suspect tower-collocation patterns in under two seconds per query.';
@@ -317,13 +320,8 @@ export default function ResearchClient() {
                   </button>
                 </div>
               </div>
-              <div className="h-[calc(100%-44px)] bg-paper">
-                <iframe
-                  src="/research/crimeintellx-ijire.pdf"
-                  title="CrimeIntellX — IJIRE Research Paper"
-                  sandbox="allow-same-origin allow-popups"
-                  className="h-full w-full"
-                />
+              <div className="h-[calc(100%-44px)] overflow-y-auto bg-paper">
+                <PdfPreview src="/research/crimeintellx-ijire.pdf" allPages />
               </div>
             </motion.div>
           </motion.div>

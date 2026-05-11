@@ -1,8 +1,11 @@
 'use client';
 
 import { AnimatePresence, motion } from 'framer-motion';
+import dynamic from 'next/dynamic';
 import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
+
+const PdfPreview = dynamic(() => import('./PdfPreview'), { ssr: false });
 
 type Props = {
   open: boolean;
@@ -216,12 +219,9 @@ export default function HackathonModal({ open, slug, title, photoCount, onClose 
                       : 'mt-3 aspect-[4/3] w-full overflow-hidden rounded-md border border-rule bg-paper'
                   }
                 >
-                  <iframe
-                    src={`${certPath}#view=FitH`}
-                    title={`${title} certificate`}
-                    className="h-full w-full"
-                    sandbox="allow-same-origin allow-popups"
-                  />
+                  <div className="relative h-full w-full">
+                    <PdfPreview src={certPath} />
+                  </div>
                 </div>
                 <a
                   href={certPath}

@@ -1,7 +1,10 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import dynamic from 'next/dynamic';
 import Link from 'next/link';
+
+const PdfPreview = dynamic(() => import('@/components/auxiliary/PdfPreview'), { ssr: false });
 import SiteHeader from '@/components/nav/SiteHeader';
 import HomeFooter from '@/components/home/HomeFooter';
 import Reveal from '@/components/motion/Reveal';
@@ -82,8 +85,8 @@ const selectedWork = [
   {
     slug: 'divyadrishti',
     name: 'DivyaDrishti',
-    tag: 'Safety · Offline-first',
-    blurb: 'Women safety app with offline emergency queueing.',
+    tag: 'Crowd-safety · Predictive',
+    blurb: 'Crowd-safety platform for concerts & police — 90s surge prediction + SOS pipeline.',
   },
 ];
 
@@ -406,12 +409,9 @@ export default function ResumePage() {
         </Reveal>
         <Reveal delay={0.08}>
           <div className="mt-8 overflow-hidden rounded-md border border-rule bg-paper-soft">
-            <iframe
-              src="/resume/gauttham-r-ms.pdf"
-              title="Gauttham R — Resume"
-              sandbox="allow-same-origin allow-popups"
-              className="aspect-[1/1.41] w-full bg-paper"
-            />
+            <div className="w-full bg-paper">
+              <PdfPreview src="/resume/gauttham-r-ms.pdf" allPages />
+            </div>
           </div>
         </Reveal>
 

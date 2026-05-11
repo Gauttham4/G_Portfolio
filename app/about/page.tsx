@@ -51,7 +51,7 @@ export default function AboutPage() {
         <Reveal dir="right" delay={0.1}>
           <div className="relative aspect-[3/4] overflow-hidden rounded-md border border-rule">
             <Image
-              src="/about/portrait-4.jpg"
+              src="/about/portrait-8.jpg"
               alt="Gauttham R on the road"
               fill
               sizes="(min-width: 768px) 50vw, 100vw"

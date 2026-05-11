@@ -11,10 +11,18 @@ if (typeof window !== 'undefined') {
   pdfjs.GlobalWorkerOptions.workerSrc = '/pdf.worker.min.mjs';
 }
 
-export default function PdfPreview({ src }: { src: string }) {
+type Props = {
+  src: string;
+  /** When true, render all pages stacked vertically (modal viewer).
+   *  When false/undefined, render only the first page (card preview). */
+  allPages?: boolean;
+};
+
+export default function PdfPreview({ src, allPages = false }: Props) {
   const wrapRef = useRef<HTMLDivElement | null>(null);
   const [width, setWidth] = useState<number>(400);
   const [errored, setErrored] = useState(false);
+  const [numPages, setNumPages] = useState(0);
 
   useEffect(() => {
     const el = wrapRef.current;
@@ -31,7 +39,7 @@ export default function PdfPreview({ src }: { src: string }) {
 
   if (errored) {
     return (
-      <div className="absolute inset-0 flex items-center justify-center bg-paper-soft">
+      <div className={allPages ? 'flex h-full w-full items-center justify-center bg-paper-soft' : 'absolute inset-0 flex items-center justify-center bg-paper-soft'}>
         <span className="font-mono text-[9px] uppercase tracking-[0.4em] text-paper-dim">
           Preview unavailable
         </span>
@@ -39,19 +47,24 @@ export default function PdfPreview({ src }: { src: string }) {
     );
   }
 
+  const wrapClass = allPages
+    ? 'flex w-full flex-col items-center gap-4 bg-paper py-4'
+    : 'absolute inset-0 flex items-start justify-center overflow-hidden bg-paper';
+
   return (
-    <div ref={wrapRef} className="absolute inset-0 flex items-start justify-center overflow-hidden bg-paper">
+    <div ref={wrapRef} className={wrapClass}>
       <Document
         file={src}
+        onLoadSuccess={({ numPages: n }) => setNumPages(n)}
         loading={
-          <div className="flex h-full w-full items-center justify-center">
+          <div className="flex h-full w-full items-center justify-center py-12">
             <span className="font-mono text-[9px] uppercase tracking-[0.4em] text-paper-dim/70">
               Rendering…
             </span>
           </div>
         }
         error={
-          <div className="flex h-full w-full items-center justify-center">
+          <div className="flex h-full w-full items-center justify-center py-12">
             <span className="font-mono text-[9px] uppercase tracking-[0.4em] text-paper-dim">
               Preview unavailable
             </span>
@@ -60,12 +73,24 @@ export default function PdfPreview({ src }: { src: string }) {
         onLoadError={() => setErrored(true)}
         onSourceError={() => setErrored(true)}
       >
-        <Page
-          pageNumber={1}
-          width={width}
-          renderTextLayer={false}
-          renderAnnotationLayer={false}
-        />
+        {allPages && numPages > 0 ? (
+          Array.from({ length: numPages }, (_, i) => (
+            <Page
+              key={i + 1}
+              pageNumber={i + 1}
+              width={width}
+              renderTextLayer={false}
+              renderAnnotationLayer={false}
+            />
+          ))
+        ) : (
+          <Page
+            pageNumber={1}
+            width={width}
+            renderTextLayer={false}
+            renderAnnotationLayer={false}
+          />
+        )}
       </Document>
     </div>
   );

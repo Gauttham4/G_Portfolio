@@ -15,7 +15,7 @@ import Image from 'next/image';
 const EASE = [0.22, 1, 0.36, 1] as const;
 
 const PARA_1 =
-  "Twenty-eight projects across AI, edtech, finance, safety, and field operations. From a paper-and-pen tuition fee book turned into a four-role finance approval pipeline, to a self-evolving multi-agent AI that teaches itself new skills, to a women's-safety platform with offline emergency queueing across mobile, web, and Python AI.";
+  "Twenty-eight projects across AI, edtech, finance, safety, and field operations. From a paper-and-pen tuition fee book turned into a four-role finance approval pipeline, to a self-evolving multi-agent AI that teaches itself new skills, to a crowd-safety platform with predictive surge alerts for concerts and SOS pipelines for first responders.";
 
 const PARA_2 =
   "Each one started the same way — somebody I knew had a problem nobody else was going to solve. Pick the smallest tool that fixes it. Ship the working product. Move on.";
