@@ -17,9 +17,9 @@ const LINKS: { label: string; href: string }[] = [
 ];
 
 const SOCIAL: { label: string; href: string }[] = [
-  { label: 'LinkedIn', href: 'https://www.linkedin.com/' },
-  { label: 'GitHub', href: 'https://github.com/' },
-  { label: 'Instagram', href: 'https://instagram.com/' },
+  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/gauttham-r-816ab32b4' },
+  { label: 'GitHub', href: 'https://github.com/Gauttham4' },
+  { label: 'Instagram', href: 'https://instagram.com/comicalhazard_415' },
   { label: 'Email', href: 'mailto:gautthamrajasekar@gmail.com' },
 ];
 
@@ -145,6 +145,8 @@ export default function HamburgerMenu() {
                 <a
                   key={s.label}
                   href={s.href}
+                  target={s.href.startsWith('mailto:') ? undefined : '_blank'}
+                  rel={s.href.startsWith('mailto:') ? undefined : 'noopener noreferrer'}
                   className="font-mono text-[10px] uppercase tracking-[0.3em] text-paper-dim transition-colors hover:text-amber"
                 >
                   {s.label}

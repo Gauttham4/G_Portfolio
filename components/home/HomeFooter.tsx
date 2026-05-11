@@ -1,9 +1,9 @@
 export default function HomeFooter() {
-  const links: { label: string; href: string }[] = [
-    { label: 'Email', href: 'mailto:hello@gauttham.dev' },
-    { label: 'LinkedIn', href: 'https://www.linkedin.com/' },
-    { label: 'GitHub', href: 'https://github.com/' },
-    { label: 'Instagram', href: 'https://instagram.com/' },
+  const links: { label: string; href: string; external?: boolean }[] = [
+    { label: 'Email', href: 'mailto:gautthamrajasekar@gmail.com' },
+    { label: 'LinkedIn', href: 'https://www.linkedin.com/in/gauttham-r-816ab32b4', external: true },
+    { label: 'GitHub', href: 'https://github.com/Gauttham4', external: true },
+    { label: 'Instagram', href: 'https://instagram.com/comicalhazard_415', external: true },
   ];
 
   return (
@@ -20,6 +20,8 @@ export default function HomeFooter() {
           <a
             key={l.label}
             href={l.href}
+            target={l.external ? '_blank' : undefined}
+            rel={l.external ? 'noopener noreferrer' : undefined}
             className="font-mono text-xs uppercase tracking-[0.3em] text-paper-dim transition-colors duration-300 hover:text-amber"
           >
             {l.label}

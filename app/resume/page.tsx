@@ -146,7 +146,7 @@ const contactCard = [
   { label: 'Email', value: 'gautthamrajasekar@gmail.com', href: 'mailto:gautthamrajasekar@gmail.com' },
   { label: 'LinkedIn', value: '/in/gauttham-r', href: 'https://www.linkedin.com/in/gauttham-r-816ab32b4' },
   { label: 'GitHub', value: '@Gauttham4', href: 'https://github.com/Gauttham4' },
-  { label: 'Instagram', value: '@gauttham', href: 'https://instagram.com/' },
+  { label: 'Instagram', value: '@comicalhazard_415', href: 'https://instagram.com/comicalhazard_415' },
 ];
 
 export default function ResumePage() {
