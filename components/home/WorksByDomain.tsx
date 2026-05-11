@@ -230,7 +230,6 @@ function ProjectCarousel({ act, accent, reduce }: { act: Act; accent: string; re
   const scrollerRef = useRef<HTMLDivElement | null>(null);
   const [canPrev, setCanPrev] = useState(false);
   const [canNext, setCanNext] = useState(true);
-  const [paused, setPaused] = useState(false);
 
   const updateNav = () => {
     const el = scrollerRef.current;
@@ -251,36 +250,6 @@ function ProjectCarousel({ act, accent, reduce }: { act: Act; accent: string; re
     };
   }, []);
 
-  // Auto-scroll loop — left-to-right, loops back to start at the end.
-  // Pauses on hover/touch/focus so user can read without fighting the motion.
-  useEffect(() => {
-    if (reduce) return;
-    const el = scrollerRef.current;
-    if (!el) return;
-
-    let raf = 0;
-    let last = performance.now();
-    const SPEED = 32; // pixels per second — gentle drift
-
-    const tick = (now: number) => {
-      const dt = (now - last) / 1000;
-      last = now;
-      if (!paused && el.scrollWidth > el.clientWidth + 4) {
-        const max = el.scrollWidth - el.clientWidth;
-        const next = el.scrollLeft + SPEED * dt;
-        if (next >= max - 0.5) {
-          // Snap back to start so the loop is seamless rather than jumpy at the end.
-          el.scrollTo({ left: 0, behavior: 'smooth' });
-        } else {
-          el.scrollLeft = next;
-        }
-      }
-      raf = requestAnimationFrame(tick);
-    };
-    raf = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(raf);
-  }, [paused, reduce]);
-
   const slide = (dir: 1 | -1) => {
     const el = scrollerRef.current;
     if (!el) return;
@@ -290,15 +259,7 @@ function ProjectCarousel({ act, accent, reduce }: { act: Act; accent: string; re
   };
 
   return (
-    <div
-      className="relative"
-      onMouseEnter={() => setPaused(true)}
-      onMouseLeave={() => setPaused(false)}
-      onFocus={() => setPaused(true)}
-      onBlur={() => setPaused(false)}
-      onTouchStart={() => setPaused(true)}
-      onTouchEnd={() => setPaused(false)}
-    >
+    <div className="relative">
       {/* Edge fade masks */}
       <div
         className="pointer-events-none absolute inset-y-0 left-0 z-10 w-12 md:w-20"
