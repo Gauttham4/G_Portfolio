@@ -9,8 +9,8 @@ export default function SiteHeader() {
   const reduce = useReducedMotion();
 
   return (
-    <header className="pointer-events-none fixed inset-x-0 top-0 z-40 glass-nav">
-      <div className="relative mx-auto flex max-w-[1600px] items-start justify-between px-6 pt-6 pb-4 md:px-10 md:pt-6 md:pb-4">
+    <header className="pointer-events-none fixed inset-x-0 top-0 z-40">
+      <div className="relative mx-auto flex max-w-[1600px] items-start justify-between px-6 pt-6 md:px-10 md:pt-8">
         {/* Logo (slide-left) */}
         <motion.div
           className="pointer-events-auto"
