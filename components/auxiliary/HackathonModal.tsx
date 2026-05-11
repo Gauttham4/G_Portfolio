@@ -94,7 +94,7 @@ export default function HackathonModal({ open, slug, title, photoCount, onClose 
         >
           <motion.div
             ref={modalRef}
-            className="relative h-full w-full max-w-7xl overflow-hidden rounded-md border border-rule bg-ink shadow-2xl"
+            className="relative h-full w-full max-w-7xl overflow-hidden rounded-2xl glass-strong shadow-2xl"
             initial={{ opacity: 0, y: 24, scale: 0.98 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 24, scale: 0.98 }}

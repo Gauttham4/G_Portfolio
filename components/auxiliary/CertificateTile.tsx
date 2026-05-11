@@ -40,8 +40,7 @@ export default function CertificateTile({ title, subtitle, src, number }: Props)
   return (
     <>
       <motion.article
-        className="group relative flex flex-col overflow-hidden rounded-md border border-rule bg-ink"
-        whileHover={{ y: -4, borderColor: 'rgba(232,184,99,0.4)' }}
+        className="group relative flex flex-col overflow-hidden rounded-xl glass glass-hover"
         transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
       >
         {/* PDF first-page preview */}

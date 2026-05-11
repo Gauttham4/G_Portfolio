@@ -38,8 +38,7 @@ export default function HackathonTile({ item }: { item: HackathonItem }) {
       <motion.button
         type="button"
         onClick={() => setModalOpen(true)}
-        className="group flex flex-col w-full text-left overflow-hidden rounded-md border border-rule bg-ink transition-all cursor-pointer"
-        whileHover={{ y: -6, borderColor: 'rgba(232,184,99,0.4)' }}
+        className="group flex flex-col w-full text-left overflow-hidden rounded-xl glass glass-hover cursor-pointer"
         transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
         onMouseEnter={() => setHover(true)}
         onMouseLeave={() => setHover(false)}

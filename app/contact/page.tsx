@@ -64,7 +64,7 @@ export default function ContactPage() {
         {/* Direct lines card */}
         <aside className="md:sticky md:top-32 md:self-start">
           <Reveal dir="right">
-            <div className="rounded-md border border-rule bg-paper-soft p-6 md:p-8">
+            <div className="rounded-xl glass p-6 md:p-8">
               <p className="font-mono text-[10px] uppercase tracking-[0.4em] text-amber">
                 Direct lines
               </p>

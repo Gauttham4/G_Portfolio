@@ -10,7 +10,7 @@ export default function AboutCaseFile() {
         whileInView={{ opacity: 1, x: 0, rotate: 1.5 }}
         viewport={{ once: true, amount: 0.35 }}
         transition={{ duration: 0.95, ease: [0.22, 1, 0.36, 1] }}
-        className="relative rounded-md border border-rule bg-paper-soft/40 px-8 py-12 shadow-2xl shadow-ink/60 md:px-14 md:py-16"
+        className="relative rounded-2xl glass-strong px-8 py-12 shadow-2xl shadow-ink/60 md:px-14 md:py-16"
       >
         {/* Torn top edge */}
         <div
