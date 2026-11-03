@@ -25,13 +25,13 @@ export default function HeroStatementFull() {
         className="absolute inset-0 will-change-transform"
       >
         <Image
-          src="/hero/gauttham-portrait.jpg"
+          src="/hero/gauttham-phone.jpg"
           alt="Gauttham R."
           fill
           priority
           sizes="100vw"
           className="object-cover object-center"
-          style={{ filter: 'contrast(1.08) saturate(1.05) brightness(1.0)' }}
+          style={{ filter: 'contrast(1.06) saturate(1.05) brightness(1.14)' }}
         />
       </motion.div>
 
