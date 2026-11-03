@@ -29,8 +29,8 @@ export default function ReelSection() {
             className="group relative mt-10 block aspect-video w-full overflow-hidden border border-rule bg-black text-left"
           >
             <Image
-              src="/reel/portfolio-reel.jpg"
-              alt="Gauttham R sitting on a bench by the sea"
+              src="/reel/reel-poster-l.jpg"
+              alt="Gauttham R sitting on a seafront bench"
               fill
               sizes="(min-width: 1152px) 1056px, 92vw"
               className="object-cover opacity-90 transition-transform duration-700 group-hover:scale-[1.02]"
