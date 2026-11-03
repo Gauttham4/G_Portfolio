@@ -8,7 +8,6 @@ import Intro from '@/components/home/Intro';
 import AwardsGrid from '@/components/home/AwardsGrid';
 import HomeAboutTeaser from '@/components/home/HomeAboutTeaser';
 import HomeFooter from '@/components/home/HomeFooter';
-import ReelSection from '@/components/home/ReelSection';
 import EvidenceBoard from '@/components/home/EvidenceBoard';
 import NowBento from '@/components/home/NowBento';
 import TeessideLeke from '@/components/leke/TeessideLeke';
@@ -45,17 +44,14 @@ export default function HomeClient() {
         {/* Home about teaser — visible intro + portraits */}
         <HomeAboutTeaser />
 
-        {/* The reel, right before the projects */}
-        <ReelSection />
-
-        {/* Featured projects — pinned horizontal rail (Framer Motion) */}
-        <PinnedHorizontalRail />
-
         {/* Now: study + what I'm building right now */}
         <NowBento />
 
         {/* Evidence board: paper, results, role, degree, now (the full 31-project index lives on /work) */}
         <EvidenceBoard />
+
+        {/* Featured projects — pinned horizontal rail (Framer Motion) */}
+        <PinnedHorizontalRail />
 
         {/* Floating Teesside sticker near footer */}
         <div className="pointer-events-none relative mx-auto flex w-full max-w-[1500px] justify-end px-6 md:px-12">
