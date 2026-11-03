@@ -10,6 +10,7 @@ import HomeAboutTeaser from '@/components/home/HomeAboutTeaser';
 import HomeFooter from '@/components/home/HomeFooter';
 import ReelSection from '@/components/home/ReelSection';
 import EvidenceBoard from '@/components/home/EvidenceBoard';
+import NowBento from '@/components/home/NowBento';
 import TeessideLeke from '@/components/leke/TeessideLeke';
 import MarqueeBand from '@/components/scroll/MarqueeBand';
 import PinnedHorizontalRail from '@/components/scroll/PinnedHorizontalRail';
@@ -49,6 +50,9 @@ export default function HomeClient() {
 
         {/* Featured projects — pinned horizontal rail (Framer Motion) */}
         <PinnedHorizontalRail />
+
+        {/* Now: study + what I'm building right now */}
+        <NowBento />
 
         {/* Evidence board: paper, results, role, degree, now (the full 31-project index lives on /work) */}
         <EvidenceBoard />
