@@ -8,6 +8,7 @@ const heroAudio = fs.existsSync(path.join(process.cwd(), "public", "audio", "her
 const nextConfig: NextConfig = {
   env: { NEXT_PUBLIC_HERO_AUDIO: heroAudio },
   devIndicators: false,
+  images: { qualities: [75, 90] },
   async headers() {
     return [
       {

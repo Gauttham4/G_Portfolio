@@ -5,13 +5,8 @@ import HeroCrimeLens, {
   PaperGrainBackdrop,
   CrimeLensBootScrolly,
   CrimeLensStoryQuotes,
-  CrimeLensArchitectureLayers,
-  CrimeLensEvidencePipeline,
-  CrimeLensCDRGraph,
-  CrimeLensPineconeFlow,
-  CrimeLensBigNumbers,
-  CrimeLensOutcomesQuote,
 } from './HeroCrimeLens';
+import { CIXBuilt, CIXSeal, CIXAsk, CIXCalls, CIXRecord } from './CrimeIntellXSections';
 import NextChapter from './NextChapter';
 import SiteFooter from '@/components/global/SiteFooter';
 import CinematicDivider from './shared/CinematicDivider';
@@ -51,18 +46,17 @@ export default function CrimeLensPage() {
         <CrimeLensStoryQuotes />
         <CinematicDivider
           src="/reels/showreel-02.mp4"
-          caption="§ Architecture"
+          caption="§ Under the hood"
           captionColor={VARS['--page-manila']}
           height="40vh"
           opacity={0.22}
           overlay={`linear-gradient(180deg, ${VARS['--page-bg']}cc, ${VARS['--page-bg']}cc)`}
         />
-        <CrimeLensArchitectureLayers />
-        <CrimeLensEvidencePipeline />
-        <CrimeLensCDRGraph />
-        <CrimeLensPineconeFlow />
-        <CrimeLensBigNumbers />
-        <CrimeLensOutcomesQuote />
+        <CIXBuilt />
+        <CIXSeal />
+        <CIXAsk />
+        <CIXCalls />
+        <CIXRecord />
         <NextChapter currentSlug="final-year-project" accent={VARS['--page-manila']} />
       </div>
       <SiteFooter />

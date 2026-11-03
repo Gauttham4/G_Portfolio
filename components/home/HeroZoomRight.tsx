@@ -27,6 +27,7 @@ export default function HeroZoomRight() {
           fill
           priority
           sizes="100vw"
+          quality={90}
           className="hz-img object-cover"
           style={{ objectPosition: POS, transform: `scale(${ZOOM})`, transformOrigin: ORIGIN }}
         />

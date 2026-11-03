@@ -109,7 +109,7 @@ export default function ResearchClient() {
         <AnimatedHeading
           as="p"
           mode="words"
-          text="Published in IJIRE Vol 7 Issue 3 — International Journal of Innovative Research in Engineering."
+          text="Published in IJIRE Vol 7 Issue 2 — International Journal of Innovative Research in Engineering."
           stagger={0.04}
           delay={0.85}
           className="mt-6 max-w-2xl font-sans text-base italic text-paper-dim md:text-lg"
