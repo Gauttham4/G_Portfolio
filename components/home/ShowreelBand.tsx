@@ -108,7 +108,7 @@ export default function ShowreelBand() {
           The reel.
         </h2>
         <p className="mt-8 font-mono text-xs uppercase tracking-[0.3em] text-paper-dim">
-          Five acts · Twenty-eight projects · One builder
+          Five acts · Thirty-one projects · One builder
         </p>
       </div>
 

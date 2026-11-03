@@ -18,9 +18,9 @@ export type ArchitectureBlock = {
 export const JARVIS = {
   kicker: 'ACT III · FRONTIER',
   title: 'JARVIS',
-  subtitle: 'A personal AI assistant that teaches itself new skills.',
+  subtitle: 'My personal AI assistant, built for me.',
   tagline:
-    'A Stark-grade personal AI built on a 3-child self-evolving architecture — talk to it, and it grows new capabilities on its own.',
+    'The assistant I built for myself. I type or speak, it routes the request to the right tool and gets it done, and when I ask for something new it adds the skill and tests it.',
 
   story: {
     title: 'The story',

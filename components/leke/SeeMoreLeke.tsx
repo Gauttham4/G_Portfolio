@@ -10,7 +10,7 @@ export default function SeeMoreLeke({
   size?: number;
   className?: string;
 }) {
-  const text = ' SEE MORE PROJECTS  ·  CASE FILES  ·  ALL 28 SHIPS  · ';
+  const text = ' SEE MORE PROJECTS  ·  CASE FILES  ·  ALL 31 SHIPS  · ';
   return (
     <Link
       href="/work"

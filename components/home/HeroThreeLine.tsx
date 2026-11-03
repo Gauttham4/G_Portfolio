@@ -35,7 +35,7 @@ export default function HeroThreeLine() {
           transition={baseTransition(0)}
           className="mb-12 font-mono text-[11px] uppercase tracking-[0.35em] text-amber/80 md:mb-16"
         >
-          Engineer  ·  Puducherry IN  ·  28 ships shipped
+          Engineer  ·  Puducherry IN  ·  31 ships shipped
         </motion.p>
 
         <h2
@@ -77,7 +77,7 @@ export default function HeroThreeLine() {
             viewport={{ once: true, margin: '-15% 0px' }}
             transition={baseTransition(0.32)}
           >
-            across 28 ships and counting.
+            across 31 ships and counting.
           </motion.span>
         </h2>
 

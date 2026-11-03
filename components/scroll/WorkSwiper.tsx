@@ -22,7 +22,7 @@ type Tile = {
 };
 
 const FEATURED: Tile[] = [
-  { slug: 'jarvis',             title: 'JARVIS',             subtitle: 'A personal AI assistant that teaches itself new skills',         category: 'AI · MULTI-AGENT' },
+  { slug: 'jarvis',             title: 'JARVIS',             subtitle: 'My personal AI assistant, built for me',         category: 'AI · MULTI-AGENT' },
   { slug: 'final-year-project', title: 'CrimeIntellX',       subtitle: "A detective's assistant for cases, evidence & call records",     category: 'AI · FORENSICS'   },
   { slug: 'electrobike',        title: 'ElectroBike',        subtitle: 'A smart electric bike that thinks with you',                     category: 'PRODUCT · IoT'    },
   { slug: 'spaceforge',         title: 'SpaceForge',         subtitle: 'A cinematic 3D landing page for a tech startup',                 category: 'CINEMATIC · 3D'   },
@@ -39,7 +39,7 @@ export default function WorkSwiper() {
       <div className="mx-auto mb-16 max-w-7xl">
         <Reveal dir="left">
           <p className="mb-6 font-mono text-[10px] uppercase tracking-[0.3em] text-amber/70">
-            §  THE WORK · 8 OF 28
+            §  THE WORK · 8 OF 31
           </p>
         </Reveal>
         <Reveal dir="bottom" delay={0.1}>
@@ -110,10 +110,10 @@ export default function WorkSwiper() {
 
       <div className="mt-16 text-center">
         <a
-          href="#acts-drilldown"
+          href="/work"
           className="font-mono text-xs uppercase tracking-[0.3em] text-amber hover:underline"
         >
-          View all 28 →
+          View all 31 →
         </a>
       </div>
     </section>

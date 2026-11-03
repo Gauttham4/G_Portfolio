@@ -80,7 +80,7 @@ export default function AboutCinematicHero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.65 }}
         >
-          From a paper-and-pen tuition fee book to a self-evolving multi-agent AI — twenty-eight ships
+          From a paper-and-pen tuition fee book to my own personal AI assistant — thirty-one ships
           across AI, edtech, finance, safety, and field operations.
         </motion.p>
       </div>

@@ -3,10 +3,10 @@ import { useRef } from 'react';
 import { motion, useScroll, useTransform, useReducedMotion } from 'framer-motion';
 
 const PHRASES = [
-  { kicker: '§ I — THE WORK',  word: 'I build.',   sub: 'Twenty-eight projects shipped. Each one started with a real, named problem.' },
+  { kicker: '§ I — THE WORK',  word: 'I build.',   sub: 'Thirty-one projects shipped. Each one started with a real, named problem.' },
   { kicker: '§ II — THE WAY',  word: 'I finish.',  sub: 'No prototypes that die in a folder. The smallest tool that solves the real problem, all the way to working.' },
   { kicker: '§ III — THE RANGE', word: 'I switch.', sub: 'PHP for institutions, Flutter for the field, MERN where the app is the product, Python where the AI is.' },
-  { kicker: '§ IV — THE NEXT',  word: 'I go on.',   sub: 'CrimeIntellX in IJIRE. Engineering at THEELABS. Forensic IT MS at Portsmouth, incoming.' },
+  { kicker: '§ IV — THE NEXT',  word: 'I go on.',   sub: 'CrimeIntellX in IJIRE. Engineering at THEELABS. MSc Digital Forensics at Teesside, now.' },
 ];
 
 export default function PinnedManifesto() {

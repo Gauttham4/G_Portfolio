@@ -25,7 +25,7 @@ const cols = [
       'Digital forensics & IR',
       'AppSec / OWASP / secure coding',
       'AI security & adversarial ML',
-      'Incoming MS focus',
+      'MSc focus',
     ],
   },
 ];

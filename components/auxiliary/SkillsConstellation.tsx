@@ -72,7 +72,7 @@ const CLUSTERS: Cluster[] = [
   },
   {
     title: 'Cybersecurity / Forensics',
-    caption: 'Incoming MS focus · 7 areas',
+    caption: 'MSc focus · 7 areas',
     skills: [
       { name: 'Digital forensics', incoming: true },
       { name: 'Incident response', incoming: true },
@@ -162,7 +162,7 @@ export default function SkillsConstellation() {
                     {s.name}
                     {s.incoming && (
                       <span className="rounded-sm border border-amber/40 px-1.5 py-px font-mono text-[8px] uppercase tracking-[0.25em] text-amber">
-                        Incoming
+                        Studying
                       </span>
                     )}
                   </motion.span>

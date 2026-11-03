@@ -7,7 +7,8 @@ import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 
 const LINKS: { label: string; href: string }[] = [
   { label: 'Home', href: '/' },
-  { label: 'Work', href: '/#acts-drilldown' },
+  { label: 'Work', href: '/work' },
+  { label: 'Watch the reel', href: '/reel' },
   { label: 'About', href: '/about' },
   { label: 'Hackathons', href: '/hackathons' },
   { label: 'Certificates', href: '/certificates' },

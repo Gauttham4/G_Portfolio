@@ -10,7 +10,7 @@ const EASE = [0.22, 1, 0.36, 1] as const;
 
 // Per-slug card metadata reused across the carousel.
 const META: Record<string, { title: string; subtitle: string; thumb: string }> = {
-  'jarvis':              { title: 'JARVIS',              subtitle: 'Self-evolving multi-agent AI',          thumb: '/work/jarvis/thumb.jpg' },
+  'jarvis':              { title: 'JARVIS',              subtitle: 'My personal AI assistant',          thumb: '/work/jarvis/thumb.jpg' },
   'final-year-project':  { title: 'CrimeIntellX',        subtitle: 'Forensic case assistant · IJIRE paper', thumb: '/work/final-year-project/thumb.jpg' },
   'electrobike':         { title: 'ElectroBike',         subtitle: 'Smart EV · voice booking · telemetry',  thumb: '/work/electrobike/thumb.jpg' },
   'spaceforge':          { title: 'SpaceForge',          subtitle: 'Cinematic 3D landing for a studio',     thumb: '/work/spaceforge/thumb.jpg' },
@@ -37,6 +37,9 @@ const META: Record<string, { title: string; subtitle: string; thumb: string }> =
   'divyadrishti':        { title: 'DivyaDrishti',        subtitle: 'Crowd-safety + predictive assist',      thumb: '/work/divyadrishti/thumb.jpg' },
   'cloud-provisioning':  { title: 'Cloud Provisioning',  subtitle: 'Self-service cloud dashboard',          thumb: '/work/cloud-provisioning/thumb.jpg' },
   'tvk':                 { title: 'TVK Connect',         subtitle: 'One-tap phone-number login',            thumb: '/work/tvk/thumb.jpg' },
+  'stone-rock-gym':      { title: 'Stone Rock Gym',      subtitle: 'Gym desk · fingerprint door · phone',   thumb: '/work/stone-rock-gym/thumb.jpg' },
+  'src-task':            { title: 'SRC Task',            subtitle: 'Field-service jobs, call to payment',    thumb: '/work/src-task/thumb.jpg' },
+  'clinicvoice':         { title: 'ClinicVoice',         subtitle: 'Tamil + English clinic phone agent',     thumb: '/work/clinicvoice/thumb.jpg' },
   'medicine-search':     { title: 'MediFind',            subtitle: 'Pocket medicine reference',             thumb: '/work/medicine-search/thumb.jpg' },
 };
 
@@ -81,7 +84,7 @@ export default function WorksByDomain() {
           </p>
           <h2 className="mt-4 font-display text-4xl tracking-tight text-paper md:text-7xl" style={{ lineHeight: 0.95 }}>
             Five domains.<br />
-            <span className="italic text-amber">Twenty-eight ships.</span>
+            <span className="italic text-amber">Thirty-one ships.</span>
           </h2>
           <p className="mt-5 max-w-xl font-sans text-base text-paper-dim md:text-lg">
             Pick a domain. The projects inside slide in. Click any card to open the full case.

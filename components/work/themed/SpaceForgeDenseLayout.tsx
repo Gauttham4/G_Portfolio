@@ -205,7 +205,7 @@ export default function SpaceForgeDenseLayout({ theme }: Props) {
                 className="absolute right-3 top-3 rounded-sm bg-black/60 px-2 py-1 font-mono text-[9px] uppercase tracking-[0.3em]"
                 style={{ color: CYAN }}
               >
-                ACT IV · 03/28
+                ACT IV · 03/31
               </span>
             </motion.div>
           </div>

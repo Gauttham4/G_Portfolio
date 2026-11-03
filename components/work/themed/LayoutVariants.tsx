@@ -1779,7 +1779,7 @@ export function SpaceForgeLayout({ theme }: Props) {
             className="font-mono text-[10px] uppercase tracking-[0.45em]"
             style={{ color: SF_NEBULA }}
           >
-            § ACT IV · CINEMATIC · 03 / 28
+            § ACT IV · CINEMATIC · 03 / 31
           </motion.p>
 
           <h1

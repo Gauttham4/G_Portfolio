@@ -7,7 +7,7 @@ import { ACTS, type Act } from '@/lib/projects-manifest';
 // Project meta — title, short subtitle, and a 2-sentence pitch shown on the
 // opposite side of each tile so the wide layout doesn't look empty.
 const PROJECT_META: Record<string, { title: string; subtitle: string; description: string }> = {
-  'jarvis':              { title: 'JARVIS',             subtitle: 'A personal AI assistant that teaches itself new skills',     description: 'A multi-agent AI that authors its own skills under a plan → implement → regression loop. The system rewrites itself while it runs — every gap-finder is a curriculum.' },
+  'jarvis':              { title: 'JARVIS',             subtitle: 'My personal AI assistant, built for me',     description: 'The assistant I built for myself. I type or speak, it routes the request to the right tool (shell, files, web search, VS Code, system info) and runs it. When I want something new, it adds the skill and tests it.' },
   'final-year-project':  { title: 'CrimeIntellX',       subtitle: "A detective's assistant for cases, evidence & call records", description: 'A forensics workspace (working name CrimeLens AI) fusing RAG over evidence, CDR analytics, and encrypted upload pipelines. Published in IJIRE — the detective’s co-pilot, before graduation.' },
   'electrobike':         { title: 'ElectroBike',        subtitle: 'A smart electric bike that thinks with you',                  description: 'Drowsiness detection, theft geofencing, and a voice-powered test-drive booking flow. Software does the thinking; the bike does the riding — zero physical hardware shipped.' },
   'spaceforge':          { title: 'SpaceForge',         subtitle: 'A cinematic 3D landing page for a tech startup',              description: 'A Spline-driven 3D landing page with manifesto-style scroll choreography. Built to push the visual ceiling for an early-stage startup that needed to look the part.' },
@@ -43,8 +43,8 @@ export default function ProjectsExplorer() {
     <section id="acts-drilldown" className="relative bg-ink py-24 md:py-32 pb-40 md:pb-48">
       {/* Section title */}
       <div className="px-4 sm:px-6 md:px-12 max-w-7xl mx-auto mb-16 md:mb-24">
-        <p className="font-mono uppercase text-amber/70 text-[10px] tracking-[0.3em] mb-4">§ ALL 28 · INDEX</p>
-        <h2 className="font-display text-paper text-4xl md:text-7xl tracking-tight leading-[0.95] mb-4">Five acts. Twenty-eight ships.</h2>
+        <p className="font-mono uppercase text-amber/70 text-[10px] tracking-[0.3em] mb-4">§ ALL 31 · INDEX</p>
+        <h2 className="font-display text-paper text-4xl md:text-7xl tracking-tight leading-[0.95] mb-4">Five acts. Thirty-one ships.</h2>
         <p className="font-sans text-paper-dim text-base md:text-lg max-w-xl">A scroll through every project, in narrative order.</p>
       </div>
 

@@ -7,12 +7,12 @@ export default function HomeFooter() {
   ];
 
   return (
-    <footer className="w-full bg-ink px-6 py-32 text-center">
+    <footer className="w-full bg-ink px-6 pt-32 pb-44 md:pb-32 text-center">
       <p className="font-mono text-xs uppercase tracking-[0.3em] text-paper-dim">
         Gauttham R  ·  Puducherry  ·  2026
       </p>
       <p className="mt-3 font-mono text-xs uppercase tracking-[0.3em] text-paper-dim">
-        Engineer at THEELABS  ·  Incoming MS — University of Portsmouth
+        Head of Research at THEELABS  ·  MSc Digital Forensics — Teesside University
       </p>
 
       <div className="mt-20 flex flex-wrap items-center justify-center gap-x-10 gap-y-4">

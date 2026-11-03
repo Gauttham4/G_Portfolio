@@ -17,7 +17,7 @@ export type SignatureMotif =
 
 export type GalleryImage = { src: string; caption: string; alt: string };
 
-export type LayoutKey = 'A' | 'B' | 'C' | 'D';
+export type LayoutKey = 'A' | 'B' | 'C' | 'D' | 'E' | 'F' | 'G';
 
 export type ProjectTheme = {
   slug: string;
@@ -61,7 +61,7 @@ function kickerFor(slug: string): string {
     for (const p of act.projects) {
       count += 1;
       if (p.slug === slug) {
-        return `§ ACT ${act.numeral} · ${act.category} · ${String(count).padStart(2, '0')} / 28`;
+        return `§ ACT ${act.numeral} · ${act.category} · ${String(count).padStart(2, '0')} / ${ACTS.reduce((n, a) => n + a.projects.length, 0)}`;
       }
     }
   }
@@ -1673,37 +1673,153 @@ for (const slug of Object.keys(MOTIFS_AND_GALLERY)) {
 // C · Editorial        — drop-cap, pull-quotes, sidebar metadata
 // D · Hacker Dossier   — terminal hero, spec table, feature checklist
 // ---------------------------------------------------------------
+// ---------------------------------------------------------------
+// Added projects: Stone Rock Gym, SRC Task, ClinicVoice
+// (images generated into /public/work/<slug>/ as thumb.jpg + gallery-1..6.jpg)
+// ---------------------------------------------------------------
+Object.assign(THEMES, {
+  'stone-rock-gym': {
+    slug: 'stone-rock-gym',
+    title: 'Stone Rock Gym',
+    subtitle: 'A gym desk that runs from a pen drive and locks the door on unpaid members.',
+    kicker: kickerFor('stone-rock-gym'),
+    heroImage: '/work/stone-rock-gym/thumb.jpg',
+    palette: { bg: '#121110', bgMid: '#1d1a18', text: '#F5EFE8', dim: '#B7A99A', accent: '#E5532D', accent2: '#F2B84B' },
+    signatureMotif: 'pulse-glow',
+    gallery: gal('stone-rock-gym', ['THE DESK', 'THE DOOR', 'THE VAULT', 'THE PHONE', 'THE SYNC', 'THE MOVE']),
+    story: { quotes: [
+      { kicker: 'Quote 01', quote: 'Refusing a member at the door deletes their fingerprint. So nothing is refused until it can be restored.', context: 'The rule behind the fingerprint vault.' },
+      { kicker: 'Quote 02', quote: 'The desk PC is the source of truth. The phone and the cloud are only mirrors.', context: 'One owner of the business rules, so the door, the desk and the phone can never disagree.' },
+      { kicker: 'Quote 03', quote: 'It has to work when the internet does not.', context: 'A gym front desk cannot wait for a router.' },
+    ] },
+    features: [
+      { title: 'Front desk for 3,700+ members', desc: 'Search, photos, payments, dues, receipts and reports, all in one app.' },
+      { title: 'Runs with no internet', desc: 'No install and no database server: one folder, on a pen drive, on any Windows PC.' },
+      { title: 'Fingerprint door control', desc: 'A biometric terminal talks to the app directly. Unpaid members are refused, and let back in the moment they pay.' },
+      { title: 'A fingerprint vault', desc: 'Every template is copied to a local vault and the cloud first, so a member never has to re-enrol.' },
+      { title: 'Owner\'s phone app', desc: 'A Flutter app shows the gym and marks someone paid. The payment reaches the desk in about five seconds.' },
+      { title: 'Years of data migrated', desc: 'Three legacy sources merged into one clean database, with a verification report.' },
+    ],
+    architecture: [
+      { layer: 'Desk PC', details: 'SQLite is the source of truth. A trigger writes every change to an outbox.' },
+      { layer: 'Sync', details: 'A poller mirrors the outbox to Firestore cheaply on the free tier, and pulls phone changes back.' },
+      { layer: 'Door', details: 'The terminal protocol is written from scratch in plain Node: no vendor SDK, no native modules.' },
+      { layer: 'Rules', details: 'Expiry and payment rules live only on the desk, so every screen agrees.' },
+    ],
+    bigNumbers: [
+      { value: '3,700+', label: 'members served' },
+      { value: '~5 s', label: 'phone to desk sync' },
+      { value: '66', label: 'API routes' },
+      { value: '0', label: 'internet needed to run' },
+    ],
+    outcomeQuote: 'A real gym\'s desk, door and phone, running from one folder.',
+  },
+  'src-task': {
+    slug: 'src-task',
+    title: 'SRC Task',
+    subtitle: 'A field-service job app: from the first call, through survey, quote and crew, to payment.',
+    kicker: kickerFor('src-task'),
+    heroImage: '/work/src-task/thumb.jpg',
+    palette: { bg: '#0B1620', bgMid: '#122533', text: '#EAF3F8', dim: '#8FB0C4', accent: '#2BB5E8', accent2: '#F2B84B' },
+    signatureMotif: 'horizontal-reveal',
+    gallery: gal('src-task', ['THE JOB', 'SIGN IN', 'THE CUSTOMER', 'THE CREW', 'THREE TARGETS', 'UNDER THE HOOD']),
+    story: { quotes: [
+      { kicker: 'Quote 01', quote: 'The API is the only thing allowed to change a job\'s status.', context: 'The server owns the money and status rules, and the database refuses direct writes to them.' },
+      { kicker: 'Quote 02', quote: 'Nobody self-registers. The office creates every account.', context: 'Three roles, one app, and each person sees only what they need.' },
+      { kicker: 'Quote 03', quote: 'Photos live in the company\'s own Google Drive, shown only to people allowed to see the job.', context: 'No paid storage plan, and no public links.' },
+    ] },
+    features: [
+      { title: 'Three roles, one app', desc: 'Office, crew and customer each get their own view of the same job.' },
+      { title: 'A ten-step job lifecycle', desc: 'Open, assigned, survey, quoted, accepted, in progress, work done, satisfied, submitted for pay, completed.' },
+      { title: 'Crew punch-in with a geofence', desc: 'Late flags, a live workers map, leave requests and attendance reports.' },
+      { title: 'Customers stay in the loop', desc: 'Accept quotes, follow the crew, sign off the work, and keep invoices and warranty in one place.' },
+      { title: 'Survey and work photos', desc: 'Stored in the company\'s own Google Drive and fetched only through the API.' },
+      { title: 'One codebase, three apps', desc: 'The same Flutter code ships an Android app, an office web console and an iPhone-friendly web app.' },
+    ],
+    architecture: [
+      { layer: 'App', details: 'Flutter, with go_router, Firestore and Firebase Auth. About 260 Dart files.' },
+      { layer: 'API', details: 'Node 22 and Express on Cloud Run, about 30 modules and a few hundred tests.' },
+      { layer: 'Data', details: 'Firestore with a strict rules file, Cloud Scheduler every 15 minutes, FCM push notifications.' },
+      { layer: 'Build', details: 'A GitHub Actions deploy, a preflight script, and an AI-assisted workflow with a LangGraph test orchestrator.' },
+    ],
+    bigNumbers: [
+      { value: '3', label: 'apps, one codebase' },
+      { value: '10', label: 'job stages' },
+      { value: '650', label: 'API test cases' },
+      { value: '155', label: 'commits' },
+    ],
+    outcomeQuote: 'A real field-service firm\'s jobs, from the first call to paid.',
+  },
+  'clinicvoice': {
+    slug: 'clinicvoice',
+    title: 'ClinicVoice',
+    subtitle: 'An AI receptionist that answers a clinic\'s phone in Tamil and English.',
+    kicker: kickerFor('clinicvoice'),
+    heroImage: '/work/clinicvoice/thumb.jpg',
+    palette: { bg: '#0b1d33', bgMid: '#14224a', text: '#EAF2FF', dim: '#8AA0C0', accent: '#5AC8FA', accent2: '#8E9BFF' },
+    signatureMotif: 'word-stagger',
+    gallery: gal('clinicvoice', ['THE CALL', 'THE BOOKING', 'THE ENGINE', 'THE SAFETY NET', 'THE FLEET', 'THE HONEST PART']),
+    story: { quotes: [
+      { kicker: 'Quote 01', quote: 'A missed call is a missed appointment.', context: 'Small clinics lose patients in the gap between the phone ringing and someone being free.' },
+      { kicker: 'Quote 02', quote: 'The agent never says confirmed until the calendar write succeeds.', context: 'Confirmed means the doctor\'s real calendar has the booking.' },
+      { kicker: 'Quote 03', quote: 'LangGraph is installed, but not on the live call path.', context: 'The live product is a Pipecat pipeline around a Gemini Live speech session.' },
+    ] },
+    features: [
+      { title: 'Tamil, English, or both', desc: 'Code-switching mid-sentence works, with the language pinned to Tamil-India.' },
+      { title: 'Real bookings', desc: 'Books, reschedules and cancels on the doctor\'s Google Calendar.' },
+      { title: 'Interrupt any time', desc: 'Barge-in is handled in about 50 ms, so callers can talk over the agent.' },
+      { title: 'Reminder calls and WhatsApp', desc: 'Outbound reminders reduce no-shows.' },
+      { title: 'Emergency transfer', desc: 'Urgent calls escalate with a live transfer to the doctor\'s phone.' },
+      { title: 'Many clinics, one codebase', desc: 'Tenant folders and a fleet console for an owner running several clinics.' },
+    ],
+    architecture: [
+      { layer: 'Telephony', details: 'Exotel for an Indian number and Twilio for international, over one WebSocket server.' },
+      { layer: 'Live path', details: 'A Pipecat frame pipeline around a single Gemini Live speech-to-speech session, with nine call tools.' },
+      { layer: 'Alternates', details: 'OpenAI Realtime is wired as an alternative, and a cascaded engine is kept as a fallback.' },
+      { layer: 'Quality', details: 'About 190 test files and an automated eval bot that replays scenarios and opens pull requests.' },
+    ],
+    bigNumbers: [
+      { value: '660+', label: 'commits' },
+      { value: '190', label: 'test files' },
+      { value: '9', label: 'call tools' },
+      { value: 'TA + EN', label: 'languages' },
+    ],
+    outcomeQuote: 'A clinic\'s phone answered at any hour, in the caller\'s own language.',
+  },
+});
+
 const LAYOUT_ASSIGNMENTS: Record<string, LayoutKey> = {
   // A · Product Launch
-  spaceforge: 'A',
-  'vkmg-landing': 'A',
-  zyntra: 'A',
-  voyagr: 'A',
-  'hotel-app': 'A',
-  'jewelry-pos': 'A',
-  // B · Case Study
+  careervisionx: 'A',
+  // B · Case Study (pinned stages, fitted for phones in globals.css)
   thaazhai: 'B',
-  'agri-tech-website': 'B',
   mindora: 'B',
   alzhmeric: 'B',
-  'dhanoos-excellence': 'B',
-  divyadrishti: 'B',
-  'fee-management': 'B',
-  'ea-tuition-app': 'B',
   // C · Editorial
   'student-portal': 'C',
-  'teacher-portal': 'C',
-  // careervisionx → Product Launch (A) so the AI mentor app gets Apple-style treatment
-  careervisionx: 'A',
   'vkmg-report-app': 'C',
-  'market-pulse': 'C',
   'medicine-search': 'C',
-  tvk: 'C',
   // D · Hacker Dossier
   'viksit-ai': 'D',
   darkwatch: 'D',
   'cloud-provisioning': 'D',
   'invoice-system': 'D',
+  clinicvoice: 'D',
+  // E · Blueprint (spec sheet)
+  'market-pulse': 'E',
+  'teacher-portal': 'E',
+  'fee-management': 'E',
+  'stone-rock-gym': 'E',
+  'src-task': 'E',
+  // F · Magazine
+  'agri-tech-website': 'F',
+  'ea-tuition-app': 'F',
+  'dhanoos-excellence': 'F',
+  'jewelry-pos': 'F',
+  // G · Showcase (filmstrip + bento)
+  'hotel-app': 'G',
+  voyagr: 'G',
+  zyntra: 'G',
 };
 
 for (const slug of Object.keys(LAYOUT_ASSIGNMENTS)) {

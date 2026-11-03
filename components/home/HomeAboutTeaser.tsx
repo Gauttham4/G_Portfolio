@@ -38,14 +38,14 @@ export default function HomeAboutTeaser() {
                 className="font-display italic leading-[1.05] tracking-tight text-paper"
                 style={{ fontSize: 'clamp(2rem, 5vw, 4.25rem)' }}
               >
-                &ldquo;I went from a paper-and-pen tuition fee book to a self-evolving
-                multi-agent AI. Same builder. Same rule&nbsp;&mdash; ship something real.&rdquo;
+                &ldquo;I went from a paper-and-pen tuition fee book to my own
+                personal AI assistant. Same builder. Same rule&nbsp;&mdash; ship something real.&rdquo;
               </p>
             </Reveal>
 
             <Reveal delay={0.25}>
               <p className="mt-8 font-mono text-[11px] uppercase tracking-[0.3em] text-paper-dim">
-                &mdash; Gauttham R, on twenty-eight projects
+                &mdash; Gauttham R, on thirty-one projects
               </p>
             </Reveal>
 

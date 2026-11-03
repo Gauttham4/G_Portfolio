@@ -16,6 +16,7 @@ import {
   EditorialLayout,
   HackerDossierLayout,
 } from './themed/LayoutVariants';
+import { BlueprintLayout, MagazineLayout, ShowcaseLayout } from './themed/NewLayouts';
 import {
   TvkPoliticalLayout,
   VkmgWireframeLayout,
@@ -37,6 +38,9 @@ export default function ThemedProjectPage({ theme }: Props) {
   if (theme.layout === 'B') return <CaseStudyLayout theme={theme} />;
   if (theme.layout === 'C') return <EditorialLayout theme={theme} />;
   if (theme.layout === 'D') return <HackerDossierLayout theme={theme} />;
+  if (theme.layout === 'E') return <BlueprintLayout theme={theme} />;
+  if (theme.layout === 'F') return <MagazineLayout theme={theme} />;
+  if (theme.layout === 'G') return <ShowcaseLayout theme={theme} />;
 
   // Default — original same-shape composition.
   const heroMotif = theme.motifs?.hero;

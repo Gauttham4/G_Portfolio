@@ -4,12 +4,12 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 
 const items = [
-  { title: '28 shipped projects', body: 'Domains span web, AI, Flutter, finance, safety.', href: '/work', tag: 'Portfolio' },
+  { title: '31 shipped projects', body: 'Domains span web, AI, Flutter, finance, safety.', href: '/work', tag: 'Portfolio' },
   { title: 'Published research', body: 'CrimeIntellX — IJIRE journal.', href: '/research', tag: 'Research' },
   { title: '5 hackathons', body: 'Beyond Hack, Hack Summit, Threx, Kroolo, Participants.', href: '/hackathons', tag: 'Events' },
   { title: '3 internships', body: 'Real teams, real shipping cycles.', href: '/certificates', tag: 'Internships' },
   { title: '4 personal certificates', body: 'Receipts from independent learning.', href: '/certificates', tag: 'Certificates' },
-  { title: 'Portsmouth offer', body: 'MS Cybersecurity + Forensic IT — confirmed.', href: '/resume', tag: 'Next' },
+  { title: 'Teesside MSc', body: 'Digital Forensics and Cyber Investigation — semester 1.', href: '/resume', tag: 'Now' },
 ];
 
 export default function AboutHighlightsGrid() {

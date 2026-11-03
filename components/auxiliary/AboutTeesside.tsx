@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 
-export default function AboutPortsmouth() {
+export default function AboutTeesside() {
   return (
     <section className="relative mx-auto max-w-6xl px-6 py-28 md:py-36">
       <div className="grid grid-cols-1 gap-12 md:grid-cols-[auto,1fr] md:items-center md:gap-16">
@@ -17,16 +17,16 @@ export default function AboutPortsmouth() {
         >
           <div className="text-center">
             <p className="font-mono text-[9px] uppercase tracking-[0.4em] text-amber">
-              UK · Border
+              UK · Campus
             </p>
             <p className="mt-2 font-display text-2xl italic leading-tight text-amber md:text-3xl">
-              Portsmouth
+              Teesside
             </p>
             <p className="mt-2 font-mono text-[9px] uppercase tracking-[0.3em] text-amber">
-              MS · 2026
+              MSc · 2026
             </p>
             <p className="mt-3 font-mono text-[9px] uppercase tracking-[0.4em] text-amber">
-              ✓ Cleared
+              ✓ Enrolled
             </p>
           </div>
         </motion.div>
@@ -36,13 +36,13 @@ export default function AboutPortsmouth() {
             Act IV · Next chapter
           </p>
           <h2 className="mt-3 font-display text-4xl leading-[1.05] tracking-tight text-paper md:text-6xl lg:text-7xl">
-            Portsmouth, <span className="italic text-amber">incoming.</span>
+            Teesside, <span className="italic text-amber">now.</span>
           </h2>
           <p className="mt-6 max-w-xl font-sans text-base leading-relaxed text-paper-dim md:text-lg">
             <strong className="text-paper">
-              MS in Cybersecurity with Forensic Information Technology
+              MSc in Digital Forensics and Cyber Investigation
             </strong>{' '}
-            — University of Portsmouth. The detective&apos;s co-pilot becomes the detective.
+            — Teesside University, Middlesbrough. Semester one is underway. The detective&apos;s co-pilot becomes the detective.
           </p>
         </div>
       </div>

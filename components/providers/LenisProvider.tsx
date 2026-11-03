@@ -19,6 +19,12 @@ export default function LenisProvider({ children }: { children: React.ReactNode 
     const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (reduce) return;
 
+    // Perf: touch devices already scroll natively and smoothly. Running Lenis there only
+    // adds a permanent requestAnimationFrame loop (and fights iOS/Android momentum scrolling).
+    // Keep smooth-scroll for mouse/trackpad desktops only.
+    const touch = window.matchMedia('(pointer: coarse)').matches;
+    if (touch) return;
+
     const lenis = new Lenis({
       duration: 0.9,
       easing: (t: number) => 1 - Math.pow(1 - t, 3),

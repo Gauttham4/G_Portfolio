@@ -4,7 +4,7 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import {
   animate,
   motion,
-  useInView,
+  useMotionValueEvent,
   useReducedMotion,
   useScroll,
   useTransform,
@@ -15,19 +15,22 @@ import Image from 'next/image';
 const EASE = [0.22, 1, 0.36, 1] as const;
 
 const PARA_1 =
-  "Twenty-eight projects across AI, edtech, finance, safety, and field operations. From a paper-and-pen tuition fee book turned into a four-role finance approval pipeline, to a self-evolving multi-agent AI that teaches itself new skills, to a crowd-safety platform with predictive surge alerts for concerts and SOS pipelines for first responders.";
+  "Thirty-one projects across AI, edtech, finance, safety, and field operations. From a paper-and-pen tuition fee book turned into a four-role finance approval pipeline, to JARVIS, my own personal AI assistant, to a crowd-safety platform with predictive surge alerts for concerts and SOS pipelines for first responders.";
 
 const PARA_2 =
   "Each one started the same way — somebody I knew had a problem nobody else was going to solve. Pick the smallest tool that fixes it. Ship the working product. Move on.";
 
 const STATS: { value: number; suffix?: string; label: string }[] = [
-  { value: 28, label: 'SHIPPED PROJECTS' },
+  { value: 31, label: 'SHIPPED PROJECTS' },
   { value: 5,  label: 'HACKATHONS' },
   { value: 1,  label: 'IJIRE PAPER' },
   { value: 3,  label: 'INTERNSHIPS' },
 ];
 
-/* ---------- Character-mask paragraph driven by scroll ---------- */
+/* ---------- Word-reveal paragraph driven by scroll ----------
+   Perf: ONE scroll subscription per paragraph writes ONE css variable (--p).
+   Every word derives its own opacity from --p in CSS (see .sw in globals.css).
+   Previously this created one motion value per CHARACTER (~570 updates/frame). */
 function ScrollParagraph({
   text,
   progress,
@@ -41,37 +44,30 @@ function ScrollParagraph({
   end: number;
   className?: string;
 }) {
+  const ref = useRef<HTMLParagraphElement>(null);
   const words = useMemo(() => text.split(/(\s+)/), [text]);
-  const totalChars = text.length;
-  let charIndex = 0;
-  return (
-    <p className={className}>
-      {words.map((w, i) => (
-        <span key={i} className={w.match(/\s/) ? '' : 'inline-block'}>
-          {Array.from(w).map((c) => {
-            const t = charIndex / totalChars;
-            const ramp = start + (end - start) * t;
-            charIndex++;
-            return (
-              <Char
-                key={`${i}-${charIndex}`}
-                ch={c}
-                progress={progress}
-                from={Math.max(0, ramp - 0.02)}
-                to={Math.min(1, ramp + 0.04)}
-              />
-            );
-          })}
-        </span>
-      ))}
-    </p>
-  );
-}
+  const count = useMemo(() => words.filter((w) => w.trim()).length, [words]);
 
-function Char({ ch, progress, from, to }: { ch: string; progress: MotionValue<number>; from: number; to: number }) {
-  const opacity = useTransform(progress, [from, to], [0.18, 1]);
+  useMotionValueEvent(progress, 'change', (v) => {
+    const el = ref.current;
+    if (!el) return;
+    const p = Math.min(1, Math.max(0, (v - start) / (end - start)));
+    el.style.setProperty('--p', p.toFixed(3));
+  });
+
+  let wi = -1;
   return (
-    <motion.span style={{ opacity }}>{ch}</motion.span>
+    <p ref={ref} className={className} style={{ ['--p' as string]: 0 }}>
+      {words.map((w, i) => {
+        if (!w.trim()) return w;
+        wi++;
+        return (
+          <span key={i} className="sw" style={{ ['--k' as string]: (wi / count).toFixed(3) }}>
+            {w}
+          </span>
+        );
+      })}
+    </p>
   );
 }
 
@@ -244,10 +240,10 @@ export default function Intro() {
                 Read the full case file <span aria-hidden>→</span>
               </a>
               <a
-                href="#acts-drilldown"
+                href="/work"
                 className="font-mono text-[11px] uppercase tracking-[0.3em] text-paper-dim transition-colors hover:text-amber"
               >
-                Or jump to the work ↓
+                Or browse all the work →
               </a>
             </motion.div>
           </div>

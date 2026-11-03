@@ -9,15 +9,15 @@ export default function ShipsLeke({
   size?: number;
   className?: string;
 }) {
-  const text = ' 28 SHIPS  ·  ONE BUILDER  ·  2026  ·  STUDIO  · ';
+  const text = ' 31 SHIPS  ·  ONE BUILDER  ·  2026  ·  STUDIO  · ';
   return (
     <StickerBase
       text={text}
       size={size}
       duration={36}
-      innerGlyph="28"
+      innerGlyph="31"
       className={className}
-      ariaLabel="28 ships, one builder, 2026"
+      ariaLabel="31 ships, one builder, 2026"
     />
   );
 }

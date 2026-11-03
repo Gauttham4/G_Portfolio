@@ -1,6 +1,6 @@
 // Phase 5 — Project gallery manifest.
 // Five acts × project slugs. Editorial monochrome shell (post Iron-Man refactor).
-// All 28 known slugs accounted for.
+// All 31 known slugs accounted for.
 
 export type ActId = 'I' | 'II' | 'III' | 'IV' | 'V';
 
@@ -62,6 +62,8 @@ export const ACTS: readonly Act[] = [
       t('hotel-app', 'Hotel App'),
       t('jewelry-pos', 'Jewelry POS'),
       t('market-pulse', 'Market Pulse'),
+      t('stone-rock-gym', 'Stone Rock Gym'),
+      t('src-task', 'SRC Task'),
     ],
   },
   {
@@ -79,6 +81,7 @@ export const ACTS: readonly Act[] = [
       t('viksit-ai', 'Viksit AI'),
       t('careervisionx', 'CareerVisionX'),
       t('darkwatch', 'DarkWatch'),
+      t('clinicvoice', 'ClinicVoice'),
     ],
   },
   {
@@ -116,4 +119,4 @@ export const ACTS: readonly Act[] = [
   },
 ] as const;
 
-export const TOTAL_PROJECTS = ACTS.reduce((n, a) => n + a.projects.length, 0); // 28
+export const TOTAL_PROJECTS = ACTS.reduce((n, a) => n + a.projects.length, 0); // 31

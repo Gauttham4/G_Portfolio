@@ -37,7 +37,7 @@ export default function AboutHero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.5 }}
         >
-          Engineer at THEELABS. Incoming MS in Cybersecurity + Forensic IT — University of Portsmouth.
+          Head of Research at THEELABS. MSc Digital Forensics and Cyber Investigation — Teesside University.
         </motion.p>
       </div>
     </section>
