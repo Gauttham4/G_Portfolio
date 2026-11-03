@@ -109,7 +109,7 @@ export default function HeroElectroBike() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, ease: ease.throttle }}
           >
-            § ACT IV · CINEMATIC · 23 / 28
+            § ACT IV · CINEMATIC · 23 / 31
           </motion.p>
 
           <motion.h1

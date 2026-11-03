@@ -65,7 +65,7 @@ export default function HeroEditorial() {
           transition={{ duration: reduce ? 0 : 0.6, ease: easing.suitEject }}
           className="mb-10 font-mono text-[11px] uppercase tracking-[0.3em] text-amber/70 md:text-xs"
         >
-          Engineer  ·  28 shipped projects  ·  Incoming MS · Portsmouth
+          Engineer  ·  31 shipped projects  ·  MSc · Teesside
         </motion.p>
 
         <h1
@@ -103,7 +103,7 @@ export default function HeroEditorial() {
           }}
           className="mt-8 max-w-2xl font-sans text-lg text-paper-dim md:text-xl"
         >
-          Engineer at THEELABS. Twenty-eight projects across AI, edtech,
+          Head of Research at THEELABS. Thirty-one projects across AI, edtech,
           finance, safety, and field operations. One rule — pick the smallest
           tool that solves the real problem, and ship it.
         </motion.p>

@@ -85,7 +85,7 @@ export default function CinematicScrub() {
             <span className="italic text-amber">in motion.</span>
           </h2>
           <p className="font-sans text-paper-dim text-base md:text-lg mt-8 max-w-xl mx-auto">
-            Twenty-eight ships, one scroll. Drive the reel with your wheel.
+            Thirty-one ships, one scroll. Drive the reel with your wheel.
           </p>
         </div>
       </div>

@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import Link from 'next/link';
 import { motion, useScroll, useTransform, useReducedMotion } from 'framer-motion';
 import Reveal from '@/components/motion/Reveal';
 
@@ -12,8 +13,9 @@ type Featured = {
 };
 
 const FEATURED: Featured[] = [
-  { slug: 'jarvis',             title: 'JARVIS',             subtitle: 'A personal AI assistant that teaches itself new skills',     category: 'AI · MULTI-AGENT' },
+  { slug: 'jarvis',             title: 'JARVIS',             subtitle: 'My personal AI assistant, built for me',     category: 'AI · MULTI-AGENT' },
   { slug: 'final-year-project', title: 'CrimeIntellX',       subtitle: "A detective's assistant for cases, evidence & call records", category: 'AI · FORENSICS' },
+  { slug: 'src-task',          title: 'SRC Task',           subtitle: 'A field-service app, from the first call to payment',        category: 'FIELD SERVICE · MOBILE' },
   { slug: 'electrobike',        title: 'ElectroBike',        subtitle: 'A smart electric bike that thinks with you',                 category: 'PRODUCT · IoT' },
   { slug: 'spaceforge',         title: 'SpaceForge',         subtitle: 'A cinematic 3D landing page for a tech startup',             category: 'CINEMATIC · 3D' },
   { slug: 'viksit-ai',          title: 'Viksit.AI',          subtitle: 'An AI workspace that codes, searches & talks back',          category: 'AI · WORKSPACE' },
@@ -22,27 +24,101 @@ const FEATURED: Featured[] = [
   { slug: 'alzhmeric',          title: 'Alzhmeric',          subtitle: "A care companion for Alzheimer's patients & their families", category: 'COMMUNITY · CARE' },
 ];
 
+/**
+ * Perf: the pinned "scroll-to-slide" version is a 500vh sticky section driven by scroll maths.
+ * That is great with a mouse wheel but janky on phones (URL-bar resize, momentum scroll,
+ * every image loading at once). So:
+ *   - desktop with a fine pointer  -> the original pinned rail (unchanged look)
+ *   - phones / touch / reduced motion -> a native horizontal swipe row with snap (same cards)
+ * The SSR/first-paint default is the lightweight swipe row; desktop upgrades after mount.
+ */
 export default function PinnedHorizontalRail() {
+  const reduced = useReducedMotion();
+  const [pinned, setPinned] = useState(false);
+
+  useEffect(() => {
+    const mq = window.matchMedia('(pointer: fine)');
+    const apply = () => setPinned(mq.matches);
+    apply();
+    mq.addEventListener('change', apply);
+    return () => mq.removeEventListener('change', apply);
+  }, []);
+
+  if (pinned && !reduced) return <PinnedRail />;
+  return <SwipeRail />;
+}
+
+function Header({ hint }: { hint: string }) {
+  return (
+    <div className="px-6 md:px-12 max-w-7xl w-full mx-auto mb-8 md:mb-12">
+      <Reveal dir="left" className="font-mono uppercase text-amber/70 text-[10px] tracking-[0.3em] mb-4">
+        § THE WORK · {FEATURED.length} OF 31
+      </Reveal>
+      <Reveal
+        dir="left"
+        delay={0.1}
+        className="font-display text-paper text-3xl md:text-5xl lg:text-6xl tracking-tight leading-[0.95]"
+      >
+        Selected projects.
+      </Reveal>
+      <Reveal dir="left" delay={0.2} className="font-sans text-paper-dim text-sm md:text-base mt-3 max-w-md">
+        {hint}
+      </Reveal>
+    </div>
+  );
+}
+
+/* ---------- Phones / touch: native swipe row ---------- */
+function SwipeRail() {
+  return (
+    <section className="relative w-full bg-ink py-16 md:py-24" aria-label="Selected work">
+      <Header hint="Swipe to browse." />
+      <div
+        className="flex gap-4 overflow-x-auto snap-x snap-mandatory scroll-px-6 md:scroll-px-12 px-6 md:px-12 pb-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+        style={{ WebkitOverflowScrolling: 'touch', overscrollBehaviorX: 'contain' }}
+      >
+        {FEATURED.map((p, i) => (
+          <div key={p.slug} className="shrink-0 snap-start w-[72vw] sm:w-[44vw] md:w-[30vw]">
+            <Card p={p} eager={i < 2} />
+          </div>
+        ))}
+      </div>
+      <p className="px-6 md:px-12 mt-4 font-mono uppercase text-paper-dim text-[10px] tracking-[0.3em]">
+        ← SWIPE — 8 PROJECTS →
+      </p>
+    </section>
+  );
+}
+
+/* ---------- Desktop: original pinned scroll-scrubbed rail ---------- */
+function PinnedRail() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const rowRef = useRef<HTMLDivElement>(null);
-  const reduced = useReducedMotion();
   const [maxX, setMaxX] = useState(0);
 
-  // Measure how far we need to translate
   useEffect(() => {
+    let t: ReturnType<typeof setTimeout> | undefined;
     const measure = () => {
       const row = rowRef.current;
       if (!row) return;
-      const w = row.scrollWidth;
-      const vw = window.innerWidth;
-      setMaxX(Math.max(0, w - vw));
+      setMaxX(Math.max(0, row.scrollWidth - window.innerWidth));
+    };
+    // debounced so resizing doesn't re-layout on every pixel
+    const onResize = () => {
+      clearTimeout(t);
+      t = setTimeout(measure, 120);
     };
     measure();
-    window.addEventListener('resize', measure);
-    const t = setTimeout(measure, 500);
+    window.addEventListener('resize', onResize, { passive: true });
+    const t2 = setTimeout(measure, 500);
+    // images change the row width once they load
+    const row = rowRef.current;
+    const imgs = row ? Array.from(row.querySelectorAll('img')) : [];
+    imgs.forEach((im) => im.addEventListener('load', measure, { once: true }));
     return () => {
-      window.removeEventListener('resize', measure);
+      window.removeEventListener('resize', onResize);
       clearTimeout(t);
+      clearTimeout(t2);
     };
   }, []);
 
@@ -50,91 +126,43 @@ export default function PinnedHorizontalRail() {
     target: sectionRef,
     offset: ['start start', 'end end'],
   });
-
-  // Scrub from 0 → -maxX px linearly across the section's scroll
-  const x = useTransform(scrollYProgress, [0, 1], reduced ? [0, 0] : [0, -maxX]);
+  const x = useTransform(scrollYProgress, [0, 1], [0, -maxX]);
 
   return (
-    <section
-      ref={sectionRef}
-      className="relative w-full bg-ink"
-      style={{ height: reduced ? 'auto' : '500vh' }}
-      aria-label="Selected work"
-    >
-      <div
-        className={
-          reduced
-            ? 'py-20 px-6 md:px-12'
-            : 'sticky top-0 h-screen w-full overflow-hidden flex flex-col justify-center'
-        }
-      >
-        {/* Header */}
-        <div className="px-6 md:px-12 max-w-7xl w-full mx-auto mb-8 md:mb-12">
-          <Reveal dir="left" className="font-mono uppercase text-amber/70 text-[10px] tracking-[0.3em] mb-4">
-            § THE WORK · 8 OF 28
-          </Reveal>
-          <Reveal
-            dir="left"
-            delay={0.1}
-            className="font-display text-paper text-3xl md:text-5xl lg:text-6xl tracking-tight leading-[0.95]"
-          >
-            Selected projects.
-          </Reveal>
-          <Reveal
-            dir="left"
-            delay={0.2}
-            className="font-sans text-paper-dim text-sm md:text-base mt-3 max-w-md"
-          >
-            Scroll to slide.
-          </Reveal>
+    <section ref={sectionRef} className="relative w-full bg-ink" style={{ height: '400vh' }} aria-label="Selected work">
+      <div className="sticky top-0 h-[100svh] w-full overflow-hidden flex flex-col justify-center">
+        <Header hint="Scroll to slide." />
+        <motion.div ref={rowRef} style={{ x }} className="flex gap-[2vw] pl-[6vw] pr-[6vw] will-change-transform">
+          {FEATURED.map((p, i) => (
+            <div key={p.slug} className="shrink-0 w-[30vw] lg:w-[26vw] xl:w-[24vw]">
+              <Card p={p} eager={i < 4} />
+            </div>
+          ))}
+        </motion.div>
+        <div className="px-6 md:px-12 max-w-7xl w-full mx-auto mt-8">
+          <p className="font-mono uppercase text-paper-dim text-[10px] tracking-[0.3em]">
+            ↓ KEEP SCROLLING — 8 PROJECTS ROLL PAST
+          </p>
         </div>
-
-        {/* Rail */}
-        {reduced ? (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 px-6 md:px-12 max-w-7xl mx-auto">
-            {FEATURED.map((p) => (
-              <Card key={p.slug} p={p} />
-            ))}
-          </div>
-        ) : (
-          <motion.div
-            ref={rowRef}
-            style={{ x }}
-            className="flex gap-[2vw] pl-[6vw] pr-[6vw] will-change-transform"
-          >
-            {FEATURED.map((p) => (
-              <div
-                key={p.slug}
-                className="shrink-0 w-[68vw] sm:w-[44vw] md:w-[30vw] lg:w-[26vw] xl:w-[24vw]"
-              >
-                <Card p={p} />
-              </div>
-            ))}
-          </motion.div>
-        )}
-
-        {/* Scroll hint */}
-        {!reduced && (
-          <div className="px-6 md:px-12 max-w-7xl w-full mx-auto mt-8">
-            <p className="font-mono uppercase text-paper-dim text-[10px] tracking-[0.3em]">
-              ↓ KEEP SCROLLING — 8 PROJECTS ROLL PAST
-            </p>
-          </div>
-        )}
       </div>
     </section>
   );
 }
 
-function Card({ p }: { p: Featured }) {
+function Card({ p, eager = false }: { p: Featured; eager?: boolean }) {
   return (
-    <a
+    <Link
       href={`/work/${p.slug}`}
       className="group block relative aspect-[3/4] overflow-hidden border border-rule rounded-sm transition-transform duration-700 ease-out hover:scale-[1.02]"
     >
+      {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src={`/work/${p.slug}/thumb.jpg`}
         alt={p.title}
+        loading={eager ? 'eager' : 'lazy'}
+        decoding="async"
+        width={600}
+        height={800}
         onError={(e) => {
           (e.currentTarget as HTMLImageElement).src = '/about/portrait-pool.jpg';
         }}
@@ -150,13 +178,11 @@ function Card({ p }: { p: Featured }) {
         <h3 className="font-display text-paper text-xl md:text-2xl mb-1 group-hover:text-amber group-active:text-amber transition-colors duration-500">
           {p.title}
         </h3>
-        <p className="font-sans text-paper-dim text-xs md:text-sm leading-snug max-w-[95%]">
-          {p.subtitle}
-        </p>
+        <p className="font-sans text-paper-dim text-xs md:text-sm leading-snug max-w-[95%]">{p.subtitle}</p>
         <span className="font-mono uppercase text-paper-dim text-[9px] tracking-[0.3em] mt-3 inline-block opacity-0 group-hover:opacity-100 group-active:opacity-100 group-hover:text-amber group-active:text-amber transition-opacity duration-500">
           VIEW →
         </span>
       </div>
-    </a>
+    </Link>
   );
 }

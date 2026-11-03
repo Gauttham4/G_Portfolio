@@ -5,8 +5,8 @@ import Marquee from 'react-fast-marquee';
 import { useReducedMotion } from 'framer-motion';
 
 const TOP =
-  'SHIP SOMETHING REAL · 28 PROJECTS · ENGINEER · BUILDER · INCOMING MS PORTSMOUTH · ';
-const BOTTOM = 'AI · EDTECH · FORENSICS · COMMUNITY · 3D · PORTSMOUTH · 2026 · ';
+  'SHIP SOMETHING REAL · 31 PROJECTS · RESEARCH · BUILDER · MSC TEESSIDE · ';
+const BOTTOM = 'AI · EDTECH · FORENSICS · COMMUNITY · 3D · TEESSIDE · 2026 · ';
 
 export default function MarqueeBand() {
   const reduce = useReducedMotion();

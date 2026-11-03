@@ -7,7 +7,7 @@ import AboutCaseFile from '@/components/auxiliary/AboutCaseFile';
 import AboutOriginPinned from '@/components/auxiliary/AboutOriginPinned';
 import AboutHowIWork from '@/components/auxiliary/AboutHowIWork';
 import AboutNumberWall from '@/components/auxiliary/AboutNumberWall';
-import AboutPortsmouth from '@/components/auxiliary/AboutPortsmouth';
+import AboutTeesside from '@/components/auxiliary/AboutTeesside';
 import AboutOffCodeChips from '@/components/auxiliary/AboutOffCodeChips';
 import AboutHighlightsGrid from '@/components/auxiliary/AboutHighlightsGrid';
 import SkillsConstellation from '@/components/auxiliary/SkillsConstellation';
@@ -16,7 +16,7 @@ import Reveal from '@/components/motion/Reveal';
 export const metadata = {
   title: 'About — Gauttham R.',
   description:
-    'Engineer at THEELABS. Incoming MS Cybersecurity + Forensic IT, University of Portsmouth. Twenty-eight ships across AI, edtech, finance, safety, and field operations.',
+    'Head of Research at THEELABS. MSc Digital Forensics and Cyber Investigation, Teesside University. Thirty-one ships across AI, edtech, finance, safety, and field operations.',
 };
 
 export default function AboutPage() {
@@ -88,8 +88,8 @@ export default function AboutPage() {
         </Reveal>
       </section>
 
-      {/* 7 — Portsmouth incoming */}
-      <AboutPortsmouth />
+      {/* 7 — Teesside */}
+      <AboutTeesside />
 
       {/* 8 — Off-code chips */}
       <AboutOffCodeChips />

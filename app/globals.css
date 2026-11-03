@@ -177,3 +177,62 @@ body {
     scroll-behavior: auto !important;
   }
 }
+
+/* Word reveal for the Intro paragraphs (driven by a single --p variable). */
+.sw {
+  opacity: clamp(0.18, calc(0.18 + (var(--p, 0) - var(--k, 0)) * 16), 1);
+}
+@media (prefers-reduced-motion: reduce) {
+  .sw { opacity: 1; }
+}
+
+/* =====================================================================
+   Mobile / touch performance guardrails (desktop look is unchanged).
+   Phones paid for: blur-on-blur glass, 384px blurred glow blobs, full-screen
+   SVG-noise + blend overlays, and 300-500vh pinned scroll runways.
+   ===================================================================== */
+@media (pointer: coarse) {
+  /* glass blur is the single most expensive paint on mobile GPUs: keep the tint, drop the blur */
+  *, *::before, *::after {
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+  }
+  /* decorative aurora blobs (blur-3xl on 384px boxes) */
+  .blur-3xl { display: none !important; }
+  /* film-grain overlays: feTurbulence + mix-blend across the whole viewport */
+  .mix-blend-soft-light,
+  [style*="feTurbulence"],
+  svg:has(feTurbulence) { display: none !important; }
+}
+
+@media (pointer: coarse) and (max-width: 900px) {
+  /* shorten the long pinned/scrubbed runways on project pages so they don't feel endless
+     and don't keep dozens of scroll-linked animations alive for 5 screens */
+  [style*="500vh"], [style*="450vh"], [style*="400vh"], [style*="350vh"] { height: 260vh !important; min-height: 0 !important; }
+  [style*="300vh"] { height: 220vh !important; min-height: 0 !important; }
+  [style*="200vh"] { height: 160vh !important; min-height: 0 !important; }
+}
+
+/* Hero audio equalizer bars */
+@keyframes eqbar {
+  0%, 100% { transform: scaleY(0.3); }
+  50% { transform: scaleY(1); }
+}
+
+/* Pinned "stage" sections on project pages hold ~35-140px more content than a phone screen fits,
+   which clipped text and made blocks overlap. On touch phones, scale the stage content to fit. */
+@media (pointer: coarse) and (max-width: 900px) {
+  .sticky.h-screen > *,
+  .sticky.h-\[100svh\] > * { zoom: 0.84; }
+}
+
+/* hero portrait ring */
+@keyframes heroRing { to { transform: rotate(360deg); } }
+
+/* hero portrait ring */
+@keyframes heroRing { to { transform: rotate(360deg); } }
+
+/* hero (zoom variant) on phones: keep the subject centred in the upper half, clear of the text */
+@media (max-width: 767px) {
+  .hz-img { transform: scale(1.22) !important; transform-origin: 30% 100% !important; object-position: 5% 50% !important; }
+}

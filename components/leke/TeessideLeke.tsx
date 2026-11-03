@@ -2,14 +2,14 @@
 
 import StickerBase from './StickerBase';
 
-export default function PortsmouthLeke({
+export default function TeessideLeke({
   size = 150,
   className,
 }: {
   size?: number;
   className?: string;
 }) {
-  const text = ' INCOMING MS  ·  UNIVERSITY OF PORTSMOUTH  ·  2026  · ';
+  const text = ' MSC DIGITAL FORENSICS  ·  TEESSIDE UNIVERSITY  ·  2026  · ';
   return (
     <StickerBase
       text={text}
@@ -18,7 +18,7 @@ export default function PortsmouthLeke({
       reverse
       innerGlyph="UK"
       className={className}
-      ariaLabel="Incoming MS, University of Portsmouth"
+      ariaLabel="MSc Digital Forensics and Cyber Investigation, Teesside University"
     />
   );
 }

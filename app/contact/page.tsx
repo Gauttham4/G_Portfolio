@@ -75,7 +75,7 @@ export default function ContactPage() {
                       href={c.href}
                       target={c.href.startsWith('http') ? '_blank' : undefined}
                       rel={c.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                      className="group flex items-center justify-between gap-4 border-b border-rule py-3 transition-transform hover:translate-x-1"
+                      className="group flex flex-col items-start gap-1 border-b border-rule py-3 transition-transform hover:translate-x-1 sm:flex-row sm:items-center sm:justify-between sm:gap-4"
                     >
                       <div className="flex items-center gap-3">
                         <span className="grid h-7 w-7 place-items-center rounded-full border border-rule font-mono text-[10px] text-amber group-hover:border-amber">
@@ -85,7 +85,7 @@ export default function ContactPage() {
                           {c.label}
                         </span>
                       </div>
-                      <span className="font-display text-sm text-paper group-hover:text-amber md:text-base">
+                      <span className="min-w-0 pl-10 font-display text-sm text-paper [overflow-wrap:anywhere] group-hover:text-amber sm:pl-0 sm:text-right md:text-base">
                         {c.value}
                       </span>
                     </a>

@@ -4,7 +4,12 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 import Image from 'next/image';
 
+import { PRELOADER_DONE } from '@/lib/media-events';
+
 const PRELOAD_FLAG = '__studio2026_preloaded';
+const announceDone = () => {
+  if (typeof window !== 'undefined') window.dispatchEvent(new Event(PRELOADER_DONE));
+};
 
 function shouldShowPreloader(): boolean {
   if (typeof window === 'undefined') return false;
@@ -50,11 +55,11 @@ const STATUS_LINES: Array<{ at: number; label: string }> = [
 
 const BOOT_LINES = [
   '> studio.gauttham.r — boot',
-  '> 28 projects indexed',
+  '> 31 projects indexed',
   '> 5 hackathons logged',
   '> IJIRE paper · verified',
-  '> THEELABS · engineer · 2026',
-  '> Portsmouth · MS · incoming',
+  '> THEELABS · head of research · 2026',
+  '> Teesside · MSc · semester 1',
   '> ready.',
 ];
 
@@ -97,12 +102,17 @@ export default function Preloader() {
   const [bootIdx, setBootIdx] = useState(0);
   const [bootChars, setBootChars] = useState(0);
   const [collageIdx, setCollageIdx] = useState(0);
+  // lite = phones / touch: shorter intro, no blurred collage, no noise filter, tap to skip.
+  const [lite, setLite] = useState(false);
   const rafRef = useRef<number | null>(null);
+  const skipRef = useRef<(() => void) | null>(null);
 
   // Decide on mount (avoid SSR hydration mismatch)
   useEffect(() => {
     const next = shouldShowPreloader();
+    setLite(window.matchMedia('(pointer: coarse)').matches);
     setShow(next);
+    if (!next) setTimeout(announceDone, 400);
     if (next) {
       try {
         window.sessionStorage.setItem(PRELOAD_FLAG, '1');
@@ -119,9 +129,9 @@ export default function Preloader() {
 
     document.body.style.overflow = 'hidden';
 
-    const COUNT_MS = reduce ? 0 : 2600;
-    const READY_MS = reduce ? 0 : 280;
-    const SPLIT_MS = reduce ? 200 : 700;
+    const COUNT_MS = reduce ? 0 : lite ? 1300 : 2600;
+    const READY_MS = reduce ? 0 : lite ? 120 : 280;
+    const SPLIT_MS = reduce ? 200 : lite ? 450 : 700;
     const start = performance.now();
 
     const tick = (now: number) => {
@@ -138,6 +148,7 @@ export default function Preloader() {
           setTimeout(() => {
             document.body.style.overflow = '';
             setShow(false);
+            announceDone();
           }, SPLIT_MS);
         }, READY_MS);
       }
@@ -151,23 +162,27 @@ export default function Preloader() {
         setTimeout(() => {
           document.body.style.overflow = '';
           setShow(false);
+          announceDone();
         }, SPLIT_MS);
       }, READY_MS);
     } else {
       rafRef.current = requestAnimationFrame(tick);
     }
 
+    const skip = () => {
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+      setPct(100);
+      setReady(true);
+      setExiting(true);
+      setTimeout(() => {
+        document.body.style.overflow = '';
+        setShow(false);
+        announceDone();
+      }, 200);
+    };
+    skipRef.current = skip;
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') {
-        if (rafRef.current) cancelAnimationFrame(rafRef.current);
-        setPct(100);
-        setReady(true);
-        setExiting(true);
-        setTimeout(() => {
-          document.body.style.overflow = '';
-          setShow(false);
-        }, 200);
-      }
+      if (e.key === 'Escape') skip();
     };
     window.addEventListener('keydown', onKey);
 
@@ -176,7 +191,7 @@ export default function Preloader() {
       window.removeEventListener('keydown', onKey);
       document.body.style.overflow = '';
     };
-  }, [show, reduce]);
+  }, [show, reduce, lite]);
 
   // Terminal boot sequencer — single RAF ticker, 25ms/char, 200ms gap between lines
   useEffect(() => {
@@ -218,12 +233,12 @@ export default function Preloader() {
 
   // Portrait collage cycler
   useEffect(() => {
-    if (show !== true || reduce) return;
+    if (show !== true || reduce || lite) return;
     const id = setInterval(() => {
       setCollageIdx((i) => (i + 1) % COLLAGE_PORTRAITS.length);
     }, COLLAGE_INTERVAL_MS);
     return () => clearInterval(id);
-  }, [show, reduce]);
+  }, [show, reduce, lite]);
 
   const bootDone = bootIdx >= BOOT_LINES.length - 1 && bootChars >= BOOT_LINES[BOOT_LINES.length - 1].length;
 
@@ -267,13 +282,14 @@ export default function Preloader() {
 
   return (
     <div
-      className="fixed inset-0 z-[100] pointer-events-none"
+      className={`fixed inset-0 z-[100] ${lite ? 'pointer-events-auto' : 'pointer-events-none'}`}
       aria-hidden={exiting ? 'true' : undefined}
+      onClick={lite ? () => skipRef.current?.() : undefined}
     >
       {/* === Backdrop layer (does NOT split — sits behind slabs) === */}
       <div className="absolute inset-0 overflow-hidden bg-ink">
         {/* Blurred portrait collage — cross-fades through 3 sources */}
-        {reduce ? (
+        {lite ? null : reduce ? (
           <div className="absolute inset-0">
             <Image
               src={COLLAGE_PORTRAITS[0]}
@@ -313,8 +329,8 @@ export default function Preloader() {
         )}
         {/* Vignette */}
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_30%,rgba(0,0,0,0.85)_85%)]" />
-        {/* Grain */}
-        <svg
+        {/* Grain (skipped on phones: full-screen SVG noise filter + blend is costly) */}
+        {!lite && <svg
           className="absolute inset-0 h-full w-full opacity-[0.06] mix-blend-soft-light"
           aria-hidden
         >
@@ -322,7 +338,7 @@ export default function Preloader() {
             <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch" />
           </filter>
           <rect width="100%" height="100%" filter="url(#preloader-noise)" />
-        </svg>
+        </svg>}
       </div>
 
       {/* === Content layer (also covered by slabs on exit) === */}
@@ -592,7 +608,7 @@ export default function Preloader() {
           {/* Esc hint */}
           <div className="mx-auto mt-4 max-w-6xl text-right">
             <span className="font-mono text-[9px] uppercase tracking-[0.3em] text-paper-dim">
-              [esc] to skip
+              {lite ? 'tap to skip' : '[esc] to skip'}
             </span>
           </div>
         </div>

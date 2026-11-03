@@ -7,10 +7,9 @@ import HeroStatement from '@/components/home/HeroStatement';
 import Intro from '@/components/home/Intro';
 import AwardsGrid from '@/components/home/AwardsGrid';
 import HomeAboutTeaser from '@/components/home/HomeAboutTeaser';
-import NowPlayingChip from '@/components/home/NowPlayingChip';
 import HomeFooter from '@/components/home/HomeFooter';
-import WorksByDomain from '@/components/home/WorksByDomain';
-import PortsmouthLeke from '@/components/leke/PortsmouthLeke';
+import ReelNow from '@/components/home/ReelNow';
+import TeessideLeke from '@/components/leke/TeessideLeke';
 import MarqueeBand from '@/components/scroll/MarqueeBand';
 import PinnedHorizontalRail from '@/components/scroll/PinnedHorizontalRail';
 
@@ -47,19 +46,18 @@ export default function HomeClient() {
         {/* Featured projects — pinned horizontal rail (Framer Motion) */}
         <PinnedHorizontalRail />
 
-        {/* All 28 — domains-first glass accordion + horizontal carousel */}
-        <WorksByDomain />
+        {/* The reel + what I'm doing now (the full 31-project index lives on /work) */}
+        <ReelNow />
 
-        {/* Floating Portsmouth sticker near footer */}
+        {/* Floating Teesside sticker near footer */}
         <div className="pointer-events-none relative mx-auto flex w-full max-w-[1500px] justify-end px-6 md:px-12">
           <div className="pointer-events-auto -mb-12 hidden md:block">
-            <PortsmouthLeke size={140} />
+            <TeessideLeke size={140} />
           </div>
         </div>
 
         <HomeFooter />
       </main>
-      <NowPlayingChip />
     </>
   );
 }

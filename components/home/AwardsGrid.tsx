@@ -21,7 +21,7 @@ type Stat = {
 };
 
 const STATS: Stat[] = [
-  { num: 28, l1: 'Shipped', l2: 'Projects' },
+  { num: 31, l1: 'Shipped', l2: 'Projects' },
   { num: 5, l1: 'Hackathons', l2: 'Attended' },
   { num: 1, l1: 'IJIRE', l2: 'Publication' },
   { num: 3, l1: 'Internships', l2: 'Completed' },

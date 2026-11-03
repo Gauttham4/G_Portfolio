@@ -19,7 +19,7 @@ const links = [
 ];
 
 const stats = [
-  { v: '28', label: 'Shipped projects' },
+  { v: '31', label: 'Shipped projects' },
   { v: '5', label: 'Hackathons' },
   { v: '1', label: 'IJIRE paper' },
   { v: '3', label: 'Internships' },
@@ -29,10 +29,10 @@ const stats = [
 
 const education = [
   {
-    kicker: 'MS · Incoming · 2025',
-    title: 'Cybersecurity with Forensic Information Technology',
-    school: 'University of Portsmouth, UK',
-    body: 'Confirmed offer. Thesis interest: AI-augmented digital forensics — building on the CrimeIntellX work.',
+    kicker: 'MSc · Semester 1 · 2026',
+    title: 'Digital Forensics and Cyber Investigation',
+    school: 'Teesside University, Middlesbrough, UK',
+    body: 'Full-time, Sep 2026 to Sep 2027. Semester one in progress. Thesis interest: AI-augmented digital forensics — building on the CrimeIntellX work.',
   },
   {
     kicker: 'B.Tech · Completed',
@@ -50,10 +50,10 @@ const education = [
 
 const experience = [
   {
-    role: 'Engineer',
+    role: 'Head of Research',
     org: 'THEELABS',
-    when: 'Current',
-    body: 'Building shipped products end-to-end — AI agent systems, full-stack apps, edtech tools, field-ops platforms. 28 projects across the org.',
+    when: 'Jul 2026 — Present',
+    body: 'Owning research direction for the voice and AI systems: model evaluation, evaluation design and trace analysis, agent and multi-tenant architecture, prototyping and feasibility. Joined as an intern in January 2026; 31 projects shipped across the org.',
   },
   {
     role: '3 Internships',
@@ -68,7 +68,7 @@ const selectedWork = [
     slug: 'jarvis',
     name: 'JARVIS',
     tag: 'AI · Multi-agent',
-    blurb: 'Self-evolving multi-agent system. Talk to it, it grows new skills.',
+    blurb: 'My personal AI assistant, built for me. Talk to it and it runs the tools; ask for a new skill and it adds it.',
   },
   {
     slug: 'final-year-project',
@@ -104,7 +104,7 @@ const skills = [
     items: ['Pinecone', 'Groq', 'Gemini', 'RAG', 'Multi-agent', 'Embeddings'],
   },
   {
-    group: 'Cyber · Forensics (incoming MS)',
+    group: 'Cyber · Forensics (MSc, Teesside)',
     items: ['Digital Forensics', 'Incident Response', 'AppSec', 'AI Security'],
   },
 ];
@@ -120,7 +120,7 @@ const awards = [
   },
   {
     kicker: 'Admission',
-    text: 'University of Portsmouth — MS Cybersecurity with Forensic IT — confirmed offer.',
+    text: 'Teesside University — MSc Digital Forensics and Cyber Investigation — semester 1.',
   },
 ];
 
@@ -128,7 +128,7 @@ const whyHire = [
   {
     kicker: '01',
     headline: 'I finish.',
-    body: 'Twenty-eight projects ship-listed. Different stacks, same person, same rule — get it to working.',
+    body: 'Thirty-one projects ship-listed. Different stacks, same person, same rule — get it to working.',
   },
   {
     kicker: '02',
@@ -180,7 +180,7 @@ export default function ResumePage() {
         <AnimatedHeading
           as="p"
           mode="words"
-          text="MS Cybersecurity + Forensic IT — University of Portsmouth, incoming."
+          text="MSc Digital Forensics and Cyber Investigation — Teesside University, semester 1."
           stagger={0.04}
           delay={0.55}
           className="mt-6 max-w-xl font-sans text-base text-paper-dim md:text-lg"
@@ -228,9 +228,9 @@ export default function ResumePage() {
         </Reveal>
         <Reveal delay={0.08}>
           <p className="mt-6 font-display text-2xl italic leading-snug text-paper-dim md:text-3xl">
-            Engineer at THEELABS. Builder of twenty-eight shipped products across AI, edtech,
-            finance, safety, and field operations. Incoming MS Cybersecurity with Forensic IT —
-            University of Portsmouth. CrimeIntellX (forensic AI workspace) published in IJIRE.
+            Head of Research at THEELABS. Builder of thirty-one shipped products across AI, edtech,
+            finance, safety, and field operations. MSc Digital Forensics and Cyber Investigation —
+            Teesside University. CrimeIntellX (forensic AI workspace) published in IJIRE.
             Pick the smallest tool that solves the real problem; ship it all the way to a
             working product.
           </p>

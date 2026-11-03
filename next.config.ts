@@ -1,6 +1,12 @@
 import type { NextConfig } from "next";
+import fs from "node:fs";
+import path from "node:path";
+
+// The hero audio control only appears when the song file exists at build/start time.
+const heroAudio = fs.existsSync(path.join(process.cwd(), "public", "audio", "hero-theme.mp3")) ? "1" : "";
 
 const nextConfig: NextConfig = {
+  env: { NEXT_PUBLIC_HERO_AUDIO: heroAudio },
   devIndicators: false,
   async headers() {
     return [

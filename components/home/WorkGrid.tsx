@@ -14,7 +14,7 @@ type Tile = {
 };
 
 const FEATURED: Tile[] = [
-  { slug: 'jarvis',             title: 'JARVIS',             subtitle: 'A personal AI assistant that teaches itself new skills',         category: 'AI · MULTI-AGENT', year: '2025' },
+  { slug: 'jarvis',             title: 'JARVIS',             subtitle: 'My personal AI assistant, built for me',         category: 'AI · MULTI-AGENT', year: '2025' },
   { slug: 'final-year-project', title: 'CrimeIntellX',       subtitle: "A detective's assistant for cases, evidence & call records",     category: 'AI · FORENSICS',   year: '2025' },
   { slug: 'electrobike',        title: 'ElectroBike',        subtitle: 'A smart electric bike that thinks with you',                     category: 'PRODUCT · IoT',    year: '2025' },
   { slug: 'spaceforge',         title: 'SpaceForge',         subtitle: 'A cinematic 3D landing page for a tech startup',                 category: 'CINEMATIC · 3D',   year: '2025' },
@@ -129,7 +129,7 @@ export default function WorkGrid() {
         {/* Section header */}
         <Reveal dir="left">
           <span className="font-mono text-[11px] uppercase tracking-[0.35em] text-amber/80">
-            ◇  References  ·  Featured 8 of 28
+            ◇  References  ·  Featured 8 of 31
           </span>
         </Reveal>
         <Reveal dir="bottom" delay={0.1} className="mt-4">
@@ -160,7 +160,7 @@ export default function WorkGrid() {
             className="group inline-flex items-baseline gap-4 font-mono uppercase tracking-[0.35em] text-amber cursor-pointer"
             style={{ fontSize: 'clamp(0.75rem, 1.4vw, 1rem)' }}
           >
-            View all 28 projects
+            View all 31 projects
             <span className="transition-transform duration-300 group-hover:translate-x-2 group-active:translate-x-2">
               →
             </span>

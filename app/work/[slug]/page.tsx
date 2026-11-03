@@ -25,6 +25,12 @@ type Props = { params: Promise<{ slug: string }> };
 
 export default async function WorkSlugPage({ params }: Props) {
   const { slug } = await params;
+  // Bespoke per-project design: components/work/projects/<slug>.tsx (default export, takes { theme })
+  if (THEMES[slug]) {
+    const mod = await import(`../../../components/work/projects/${slug}`).catch(() => null);
+    const Custom = mod?.default as React.ComponentType<{ theme: (typeof THEMES)[string] }> | undefined;
+    if (Custom) return <Custom theme={THEMES[slug]} />;
+  }
   const Renderer = RENDERERS[slug];
 
   if (Renderer) {

@@ -102,7 +102,7 @@ export default function HeroJarvis() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, ease: ease.hud }}
       >
-        § ACT III · FRONTIER · 09 / 28
+        § ACT III · FRONTIER · 09 / 31
       </motion.p>
 
       <div className="relative z-10 grid lg:grid-cols-2 items-center gap-12 lg:gap-6 min-h-[100svh] px-4 sm:px-6 md:px-12 max-w-7xl mx-auto pt-24 pb-12">
@@ -133,7 +133,7 @@ export default function HeroJarvis() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 2.0, ease: ease.reactor }}
           >
-            An AI assistant that teaches itself.
+            My personal AI assistant.
           </motion.p>
         </div>
       </div>
@@ -712,7 +712,7 @@ export function JarvisArchitectureGraph() {
   return (
     <section ref={ref} className="relative" style={{ minHeight: '300vh', background: palette.bg }}>
       <div className="sticky top-0 h-[100svh] flex items-center">
-        <div className="grid lg:grid-cols-2 gap-10 px-6 md:px-12 max-w-7xl mx-auto w-full items-center">
+        <div className="grid lg:grid-cols-2 gap-5 lg:gap-10 px-6 md:px-12 max-w-7xl mx-auto w-full items-center">
           <ArchTextStack progress={scrollYProgress} blocks={blocks} />
           <ArchDiagram progress={scrollYProgress} reduce={!!reduce} />
         </div>
@@ -729,7 +729,7 @@ function ArchTextStack({
   blocks: typeof JARVIS.architecture;
 }) {
   return (
-    <div className="space-y-12">
+    <div className="space-y-7 lg:space-y-12">
       <p className="font-mono uppercase text-xs tracking-[0.4em]" style={{ color: palette.dim }}>
         § Architecture
       </p>
